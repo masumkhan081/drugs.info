@@ -12,7 +12,10 @@ const { verifyRoute } = require("./routes/verifyRoute");
 const { resetRoute } = require("./routes/resetRoute");
 const { setGroups } = require("./controllers/genController");
 // -------------------------------------------            -connection
-mongoose.connect(process.env.URI, { useNewUrlParser: true });
+const process_env_URI =
+  "mongodb+srv://mkhan:passme@cluster-drug-stock.hcrtyb4.mongodb.net/?retryWrites=true&w=majority";
+const process_env_PORT = 3000;
+mongoose.connect(process_env_URI, { useNewUrlParser: true });
 const conn = mongoose.connection;
 conn.on("connected", function () {
   console.log("database is connected successfully");
@@ -28,8 +31,8 @@ conn.on("error", () => {
 
 // --------------------------------------------        server-start
 const app = express();
-app.listen(process.env.PORT, () => {
-  console.log(`port:${process.env.PORT}`);
+app.listen(process_env_PORT, () => {
+  console.log(`port:${process_env_PORT}`);
 });
 // ------------------------------------------          view engine and layout
 app.set("view engine", "ejs");
