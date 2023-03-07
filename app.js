@@ -87,6 +87,13 @@ app.get("https://drugs-info-pxuabi4to-masumkhan.vercel.app/", (req, res) => {
 
 // module.exports.handler = serverless(app);
 /*
+
+
+"dev": "nodemon app.js",
+    "install": "npm install",
+    "build": "npm build"
+
+
 git init
 git add *
 git commit -m "msg"
