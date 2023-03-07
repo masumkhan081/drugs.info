@@ -1,0 +1,239 @@
+<div class="mx-4 mt-4 bg-info bg-opacity-10" style="min-height: 450px;">
+    <div class="d-flex  flex-row-reverse">
+        <button onclick="show_addmodal()" id="id-drug-add" class="rounded-5 btn btn-sm bg-primary bg-opacity-25"><i
+                class="fa fa-plus-circle"></i> Drug</button>
+        <div class="form-generic d-flex flex-row">
+            <input type="text" placeholder="Search" class=" border-0 form-control form-control-sm text-center bg-primary bg-opacity-10 rounded">
+            <button type="submit" class="me-5 btn bg-primary bg-opacity-25 btn-sm rounded-pill"><i
+                    class="px-2 float-end fas fa-search"></i> </button>
+        </div>
+        <span class="text-sm-start me-5 text-success " id="the_delivery_guy">
+            <%=msg%>
+        </span>
+    </div>
+    <table style="width: 100%" class="mt-3 rounded-3">
+        <thead>
+            <tr class="bg-primary bg-opacity-10" style="font-size: 12px;font-family: 'tahoma' ">
+                <th scope="col">#</th>
+                <th scope="col">Brand Name</th>
+                <th scope="col">Generic</th>
+                <th scope="col">Manufacturer</th>
+                <th scope="col">Drug Detail</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i=0;i<drugs.length;i++) { %>
+                <tr>
+                    <th scope="row">
+                        <%=i+1%>
+                    </th>
+                    <td>
+                        <%=drugs[i].drg_name %>
+                    </td>
+                    <td>
+                        <%=drugs[i].gen_name %>
+                    </td>
+                    <td>
+                        <%=drugs[i].cmp_name %>
+                    </td>
+                    <td>
+                        <a href="/drugs?drgid=<%=drugs[i].drg_id%>&pagenumb=<%=skip / limit + 1%>" class="btn btn-sm btn-info " style="font-size: 11px; ">
+                            <i class="fas fa-info    "></i></a>
+                    </td>
+                    <td>
+                        <button onclick="show_editmodal(`<%=drugs[i].drg_id%>`,`<%=drugs[i].drg_name %>`,`<%=drugs[i].cmp_id %>`,`<%=drugs[i].gen_id %>` )" class="btn btn-sm btn-success " style="font-size: 10px; ">
+                            <i class="fas fa-pen "></i></button>
+                    </td>
+                    <td>
+                        <button onclick="show_dltmodal(`<%=drugs[i].drg_id%>`)" class="btn btn-sm btn-warning " style="font-size: 10px; "> <i class="fas fa-trash "></i></button>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+    <div class="pt-1">
+        <div class="border-1 text-start" style="font-size: 12px;font-family: 'tahoma' ">
+            <form id="drg_pagenumbform" action="/drugs" method="get">
+                <span class="text-success ms-2">
+                    <strong> Page:</strong>
+                </span>
+                <input id="drg_pagenumb" onchange="pageNumbSubmit()" name="pagenumb" type="number" value=<%=skip / limit + 1%> style="width: 50px;height: 24px;" class="rounded border-0 bg-primary bg-opacity-10 text-center border-success border-bottom-2
+                d-inline" >
+                <span class=" text-success text-start text-capitalize">( <%=Math.ceil(count/limit )%> Pages, <%=count%> Drugs)</span>
+            </form>
+        </div>
+    </div>
+    <%-include('_page_drug_detail')%>
+        <%-include('_modal_add_detail')%>
+            <%-include('_modal_edit_detail')%>
+                <%-include('_modal_delete_detail')%>
+                    <%-include('modal_drug_edit')%>
+                        <%-include('modal_drug_add')%>
+                            <%-include('modal_drug_delete')%>
+
+                                <!--  -->
+                                <script>
+                                    function show_editmodal(drg_id, drg_name, cmp_id, genid) {
+                                        document.getElementById('edtdrgname').value = drg_name;
+                                        document.getElementById('edtdrgid').value = drg_id;
+                                        document.getElementById('edit-modal').style.display = 'block'
+                                        document.getElementById('edit_selectedcmp').value = cmp_id
+                                        detectgrp(genid)
+                                    }
+
+                                    function detectgrp(genid) {
+                                        fetch("/drugs/detectgrp", {
+                                            method: "post",
+                                            body: JSON.stringify({
+                                                genid,
+                                            }),
+                                            headers: {
+                                                'Content-type': 'application/json',
+                                            }
+                                        }).then(res =>
+                                            res.json()
+                                        ).then(json => {
+                                            console.log(json.data + "  pokath:  " + JSON.stringify(json))
+                                            document.getElementById("edit_selectedgrp").value = json.data.grp_id
+                                            getGensByGrp("edit")
+                                            setTimeout(() => {
+                                                document.getElementById("edit_selectedgen").value = genid
+                                            }, 400);
+
+                                        })
+                                    }
+
+                                    function pageNumbSubmit() {
+                                        console.log(document.getElementById('drg_pagenumb').value)
+                                        if (document.getElementById('drg_pagenumb').value > 0) {
+                                            document.getElementById("drg_pagenumbform").submit();
+                                        }
+                                    }
+
+                                    function pageUp() {
+                                        document.getElementById('drg_pagenumb').value = Number(document.getElementById('drg_pagenumb').value) + 1
+                                    }
+
+                                    function pageDown() {
+                                        if (document.getElementById('drg_pagenumb').value > 1) {
+                                            document.getElementById('drg_pagenumb').value = Number(document.getElementById('drg_pagenumb').value) - 1
+                                        }
+                                    }
+
+                                    let tobeDeleted = {}
+
+                                    function show_add_drug_detail(drgname, drgid) {
+                                        //  document.getElementById('add_detail_name').innerHTML = "New Variant Of: " + drgname;
+                                        // document.getElementById('add_detailid').value = drgid;
+                                        document.getElementById('add-detail-modal').style.display = 'block'
+                                    }
+
+                                    function show_edit_drug_detail(detailid) {
+                                        console.log("call:   " +
+                                            detailid)
+                                        document.getElementById('edt-detail-modal').style.display = 'block'
+                                        document.getElementById('edt_detailid').value = detailid;
+                                    }
+
+                                    function show_delete_drug_detail(detailid, drugid) {
+                                        console.log("call:   " +
+                                            detailid)
+                                        document.getElementById('dlt-detail-modal').style.display = 'block'
+                                        document.getElementById('dlt_detailid').value = detailid;
+                                        document.getElementById('dlt_detail_drug_id').value = drugid;
+                                    }
+
+                                    function getGensByGrp(sign) {
+
+                                        let id_selectedgrp;
+                                        if (sign === 'add') {
+                                            id_selectedgrp = document.getElementById("add_selectedgrp").value
+                                        }
+                                        if (sign === 'edit') {
+                                            id_selectedgrp = document.getElementById("edit_selectedgrp").value
+                                        }
+                                        console.log(" at least here ! " + id_selectedgrp)
+                                        fetch("/drugs/gensbygrp", {
+                                                method: "post",
+                                                body: JSON.stringify({
+                                                    grpid: id_selectedgrp
+                                                }),
+                                                headers: {
+                                                    'Content-type': 'application/json',
+                                                }
+                                            }).then(res =>
+                                                res.json()
+                                            ).then(json => {
+                                                console.log(json)
+                                                let arr = json.gens;
+                                                if (sign === 'add') {
+                                                    select = document.getElementById('add_selectedgen');
+                                                }
+                                                if (sign === 'edit') {
+                                                    select = document.getElementById('edit_selectedgen');
+                                                }
+                                                select.innerHTML = " "
+                                                var opt = document.createElement('option');
+                                                opt.value = "";
+                                                opt.innerHTML = "Select a generic";
+                                                // opt.disabled = true
+                                                opt.selected = true
+                                                select.appendChild(opt);
+                                                for (var i = 0; i <= json.count; i++) {
+                                                    opt = document.createElement('option');
+                                                    opt.value = arr[i]._id;
+                                                    opt.innerHTML = arr[i].name;
+                                                    select.appendChild(opt);
+                                                }
+                                            })
+                                            .catch(err => {
+                                                console.log(err)
+                                            })
+                                    }
+
+                                    function show_dltmodal(drg_id) {
+                                        document.getElementById('dlt_drgid').value = drg_id;
+                                        document.getElementById('dlt-modal').style.display = 'block'
+                                    }
+
+                                    function show_addmodal() {
+                                        document.getElementById('add-modal').style.display = 'block'
+                                    }
+
+
+
+                                    setTimeout(() => {
+                                        const idmsg = "the_delivery_guy";
+                                        document.getElementById(idmsg).innerHTML = " "
+                                    }, 3000)
+
+                                    window.onclick = function(event) {
+                                        var addmodal = document.getElementById('add-modal');
+                                        var dltmodal = document.getElementById('dlt-modal');
+                                        var editmodal = document.getElementById('edit-modal');
+                                        var adddetailmodal = document.getElementById('add-detail-modal');
+                                        var dltdetailmodal = document.getElementById('dlt-detail-modal');
+                                        var edtdetailmodal = document.getElementById('edt-detail-modal');
+                                        if (event.target == addmodal) {
+                                            addmodal.style.display = "none";
+                                        }
+                                        if (event.target == dltmodal) {
+                                            dltmodal.style.display = "none";
+                                        }
+                                        if (event.target == editmodal) {
+                                            editmodal.style.display = "none";
+                                        }
+                                        if (event.target == adddetailmodal) {
+                                            adddetailmodal.style.display = "none";
+                                        }
+                                        if (event.target == dltdetailmodal) {
+                                            dltdetailmodal.style.display = "none";
+                                        }
+                                        if (event.target == edtdetailmodal) {
+                                            edtdetailmodal.style.display = "none";
+                                        }
+                                    }
+                                </script>
+</div>

@@ -1,0 +1,147 @@
+<div
+  class="row navbar mt-0 pt-0 shadow-sm"
+  style="background-color: rgb(7, 58, 58)"
+>
+  <div
+    class="ms-4 col-md-4 navbar-brand text-md-start text-center wrap d-flex align-content-center"
+  >
+    <a
+      href="/"
+      class="px-1 text-decoration-none text-white border-3 border-start border-end border-success rounded-pill"
+      >drugs.info</a
+    >
+    <a
+      target="_blank"
+      class="ms-3 mt-1 text-light"
+      href="https://github.com/masumkhan081/drugs-info"
+      ><i class="fa-brands fa-github me-1"></i
+    ></a>
+    <div class="btn-group" role="group">
+      <button
+        id="btnGroupDrop"
+        type="button"
+        class="btn btn-sm fw-normal bg-success bg-opacity-75 mt-1 px-2 text-light rounded-3 py-0 ms-3 dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="fa fa-user text-light me-1 mb-1" aria-hidden="true"></i>User
+      </button>
+      <ul
+        class="mt-2 dropdown-menu py-5 text-center"
+        style="background-color: rgb(207, 228, 228)"
+        aria-labelledby="btnGroupDrop"
+      >
+        <li>
+          <a
+            class="dropdown-item text-success px-1 rounded"
+            href="/users/register"
+            ><i class="fa fa-user-plus me-1" aria-hidden="true"></i> Register
+          </a>
+        </li>
+        <hr />
+        <li>
+          <a
+            class="dropdown-item text-primary px-1 rounded"
+            href="/users/signin"
+            ><i class="fas fa-sign-in me-1"></i> Login</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-7 me-2 pt-1">
+    <ul
+      class="nav text-black d-flex justify-content-center justify-content-md-end align-items-start flex-sm-row flex-column"
+    >
+      <li class="nav-item">
+        <a
+          class="nav-link fw-bold rounded-3"
+          href="/drugs"
+          style="color: rgb(236, 168, 145)"
+        >
+          Brands
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-info fw-bold rounded-3" href="/companies"
+          >Manufacturers</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-warning fw-bold rounded-3" href="/generics"
+          >Generics</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link fw-bold rounded-3"
+          href="/groups"
+          style="color: lightblue"
+          >Groups</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link fw-bold rounded-3"
+          href="/formulations"
+          style="color: beige"
+          >Formulations</a
+        >
+      </li>
+    </ul>
+  </div>
+  -->
+  <!--                                     USER    MODAL                                  -->
+  <%-include('modal_register',{errors:[]})%> <%-include('modal_login')%>
+  <!--  -->
+  <script>
+    function passCommonality() {
+      let pass1 = document.getElementById("regpass").value;
+      let pass2 = document.getElementById("regpass2").value;
+      let regerror = document.getElementById("regerror");
+      if (regerror.firstChild) {
+        regerror.removeChild(regerror.firstChild);
+      }
+      let li;
+      console.log("in pass commonoatliy" + pass1 + "   " + pass2);
+      if (pass1 != pass2) {
+        li = document.createElement("li");
+        li.innerHTML = "Dissimilar Password & Confirm Password";
+        regerror.appendChild(li);
+        document.getElementById("btnsubmitreg").disabled = true;
+      }
+      if (pass1 == pass2) {
+        document.getElementById("btnsubmitreg").disabled = false;
+      }
+    }
+
+    function logintoRegister() {
+      document.getElementById("login-modal").style.display = "none";
+      document.getElementById("register-modal").style.display = "block";
+    }
+
+    function registertoLogin() {
+      document.getElementById("register-modal").style.display = "none";
+      document.getElementById("login-modal").style.display = "block";
+    }
+
+    function show_registerModal() {
+      document.getElementById("register-modal").style.display = "block";
+    }
+
+    function show_loginModal() {
+      document.getElementById("login-modal").style.display = "block";
+    }
+    window.onclick = function (event) {
+      let loginmodal = document.getElementById("login-modal");
+      let registermodal = document.getElementById("register-modal");
+
+      if (event.target == loginmodal) {
+        //  loginmodal.style.display = "none ";
+      }
+      if (event.target == registermodal) {
+        //  registermodal.style.display = "none ";
+      }
+    };
+  </script>
+</div>

@@ -1,0 +1,20 @@
+<div class="text-center mb-auto ps-5 pe-5 border-info border-1 border-bottom  rounded-pill">
+    <span class="h5 text-center">
+        <%= msg %>
+    </span>
+    <%if(email.length>0){%> <span class=" mark ">
+            <%=email%>
+        </span> <br>
+        <span class=" text-start ">Please check spam folder too</span>
+        <%} %>
+            <%if(typeof send_new_verification !='undefined' ){%>
+                <div>
+                    <form action="sendnewlink" method="post">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="email here">
+                            <button type="submit">Send New</button>
+                        </div>
+                    </form>
+                </div>
+                <%}%>
+</div>

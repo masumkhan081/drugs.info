@@ -1,0 +1,74 @@
+<div id="edit-modal" class="modal mt-5 ps-3 text-center" style="background-color: beige">
+    <div class="modal-header">
+        <h5 class="modal-title">Modify Drug</h5>
+        <button class="btn btn-warning" onclick="document.getElementById( 'edit-modal').style.display='none' ">
+      <i class="fa fa-times-circle" aria-hidden="true "></i>
+    </button>
+    </div>
+    <div class="modal-body">
+        <form class="text-start" action="/drugs/edt" method="post">
+            <div class="form-group row mb-3">
+                <label for="edit_selectedcmp" class="col-sm-3 col-form-label">Manufacturers:</label
+        >
+        <div class="col-sm-9">
+          <select
+            name="cmpid"
+            id="edit_selectedcmp"
+            required
+            class="form-control rounded"
+            style="width: 250px"
+          >
+            <option value="" disabled selected>Select a manufacturer</option>
+            <%companies.forEach(cmp=> {%>
+            <option value="<%=cmp.id%>"><%=cmp.name%></option>
+            <% });%>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="edit_selectedgrp" class="col-sm-3 col-form-label"
+          >Groups:</label
+        >
+        <div class="col-sm-5">
+          <select
+            name="grpid"
+            id="edit_selectedgrp"
+            onchange="getGensByGrp('edit')"
+            required
+            class="form-control rounded"
+          >
+            <option value="" selected>Select a group</option>
+            <%groups.forEach(grp=> {%>
+            <option value="<%=grp.id%>"><%=grp.name%></option>
+            <% });%>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="edit_selectedgen" class="col-sm-3 col-form-label"
+          >Generics:</label
+        >
+        <div class="col-sm-9">
+          <select
+            name="genid"
+            id="edit_selectedgen"
+            required
+            class="form-control rounded"
+            style="width: 250px"
+          >
+            <option value="" disabled selected>Select a generic</option>
+          </select>
+        </div>
+      </div>
+      <label for="drgname" class="form-label">Name:</label>
+                <input id="edtdrgname" type="text text-sm" class="form-control text-start mb-3 w-50" required name="drgname" placeholder="Drug name" />
+                <input hidden type="text" id="edtdrgid" value="" name="drgid" />
+                <button class="btn btn-warning mt-1 w-25 rounded" onclick="document.getElementById( 'edit-modal').style.display='none' ">
+        Cancel
+      </button>
+                <button type="submit" class="btn btn-info mt-1 w-25 rounded">
+        Update
+      </button>
+        </form>
+        </div>
+    </div>

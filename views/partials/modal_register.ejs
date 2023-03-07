@@ -1,0 +1,43 @@
+<div id="register-modal" class="modal mt-5 rounded bg-success bg-opacity-50">
+    <div class="modal-dialog " role="document ">
+        <div class="modal-content ">
+            <div style="background-color: darkseagreen;">
+                <span class="ps-2 pt-1 h6 text-center text-muted float-start rounded ">User Registration</span>
+                <button class="btn btn-sm bg-danger bg-opacity-50 px-2 float-end text-sm-center" onclick="document.getElementById( 'register-modal').style.display='none' "> Close </button>
+            </div>
+            <div class="modal-body pb-3 border-start border-info border-1 " style="background-color:azure;">
+                <ul class="text-danger list-unstyled text-start" id="regerror">
+                    <%errors.map(err=>{%>
+                        <li class="text-danger">
+                            <%=err%>
+                        </li>
+                        <%})%>
+                </ul>
+                <form action="/users/register" method="POST">
+                    <div class="form-group mb-2">
+                        <label for="name" class="float-start">Name</label>
+                        <input type="name" name="name" required class="form-control" placeholder="Your Name" value="<%= typeof name != 'undefined' ? 'mk chd':'mk khan'  %>" />
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="email" class="float-start">Email</label>
+                        <input type="email" name="email" required class="form-control" placeholder="Enter Email" value="dvsdvsdv@gmail.com" />
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="password " class="float-start">12345678</label>
+                        <input type="password" id="regpass" name="password" oninput="passCommonality()" required class="form-control" placeholder="Password ?" value="<%= typeof password != 'undefined' ?  " 123456 ": " 1234567 " %>" />
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="password2" class="float-start">12345678</label>
+                        <input type="password" id="regpass2" oninput="passCommonality()" name="password2" required class="form-control" placeholder="Password again ... " value="<%= typeof password2 != 'undefined' ? " 123456 ":" 1234567 " %>" />
+                    </div>
+                    <button id="btnsubmitreg" type="submit" class="mt-3 btn btn-primary float-end rounded w-50">
+                        Register </button>
+                </form>
+                <span class="float-start mt-3">
+                    <strong class=" mt-1">Have An Account?</strong>
+                    <button class=" btn text-bg  btn-link" onclick="registertoLogin()">Login</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

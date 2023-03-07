@@ -1,0 +1,33 @@
+<div id="edt-detail-modal" class="modal mt-5 rounded  ">
+    <div class="modal-dialog " role="document ">
+        <div class="modal-content bg-light">
+            <div class="modal-body pb-4">
+                <form action="/drugs/detail/edt" method="post">
+                    <input hidden type="text" id="edt_detailid" value="" name="detailid" />
+                    <span class="h5 d-block mb-4 pb-2 border-bottom border-1 border-success text-start">Change in drug
+                        variant </span>
+                    <div class="form-group row mb-3">
+                        <labelclass="col-sm-3 form-label "> Formulations:</label>
+                            <div class=" col-sm-9">
+                                <select required class="form-control rounded mb-4 " name="frmid">
+                                <option value="" disabled selected>Select a type</option>
+                                <%formulations.forEach(frm=> {%> <option value="<%=frm.id%>">
+                                        <%=frm.name%>
+                                    </option>
+                                    <% });%>
+                            </select>
+                            </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label for="strength" class="col-sm-3 form-label text-start">Strength:</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="strength" value="" class=" text-sm-start form-control text-center mb-3" required placeholder="Strength">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-outline-success  float-end  w-25 rounded">Update</button>
+                </form>
+                <button onclick="document.getElementById('edt-detail-modal').style.display='none'" class="float-start btn btn-sm btn-outline-info w-25 rounded "> Cancel </button>
+            </div>
+        </div>
+    </div>
+</div>

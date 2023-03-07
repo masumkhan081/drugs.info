@@ -1,0 +1,16 @@
+<div id="dlt-detail-modal" class="modal mt-5 rounded  ">
+    <div class="modal-dialog " role="document ">
+        <div class="modal-content bg-light">
+            <div class="modal-body pb-4">
+                <form action="/drugs/detail/dlt" method="DELETE">
+                    <input hidden type="text" id="dlt_detailid" value="" name="detailid" />
+                    <input hidden type="text" id="dlt_detail_drug_id" value="" name="drugid" />
+                    <span class="h5 d-block mb-4 pb-2 border-bottom border-2 border-success text-start">Sure About
+                        Deletion ? </span>
+                    <button type="submit" class="float-end btn btn-sm btn-danger w-25 rounded ">Delete</button>
+                </form>
+                <button onclick="document.getElementById('dlt-detail-modal').style.display='none'" class="float-start btn btn-sm btn-outline-info w-25 rounded "> Cancel </button>
+            </div>
+        </div>
+    </div>
+</div>

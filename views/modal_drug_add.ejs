@@ -1,0 +1,72 @@
+<div id="add-modal" class="modal mt-5 mb-5 ps-5" style="background-color: rgb(226, 226, 206)">
+    <div class="modal-header">
+        <h5 class="modal-title border-1 border-bottom border-info">New Drug</h5>
+        <button class="btn btn-warning px-3" onclick="document.getElementById( 'add-modal').style.display='none' ">
+      X
+    </button>
+    </div>
+    <div class="modal-body">
+        <form class="text-start" action="/drugs" method="POST">
+            <div class="form-group row mb-3">
+                <label for="selectedcmp" class="col-sm-3 col-form-label">Manufacturers:</label
+        >
+        <div class="col-sm-6">
+          <select required class="form-control rounded" name="selectedcmp">
+            <option value="" disabled selected>Select a manufacturer</option>
+            <%companies.forEach(cmp=> {%>
+            <option value="<%=cmp.id%>"><%=cmp.name%></option>
+            <% });%>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="add_selectedgrp" class="col-sm-3 col-form-label"
+          >Groups:</label
+        >
+        <div class="col-sm-6">
+          <select
+            id="add_selectedgrp"
+            onchange="getGensByGrp('add')"
+            required
+            class="form-control rounded"
+            name="add_selectedgrp"
+          >
+            <option value="" disabled selected>Select a group</option>
+            <%groups.forEach(grp=> {%>
+            <option value="<%=grp.id%>"><%=grp.name%></option>
+            <% });%>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="add_selectedgen" class="col-sm-3 col-form-label"
+          >Generics:</label
+        >
+        <div class="col-sm-6">
+          <select
+            id="add_selectedgen"
+            required
+            class="form-control rounded"
+            name="selectedgen"
+          >
+            <option value="" disabled selected>Select a generic</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="drgname" class="col-sm-3 form-label">Name:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control text-sm-start mb-3" required name="drgname" placeholder="Drug name" />
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <button type="submit" class="btn w-50 btn-outline-success mt-1 rounded">
+            Save
+          </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div>
+    <div id="middlefinger">
+        <h3 class="p-5 m-5">Hey ! mongodb gave you this</h3>
+
+        <i class="fas fa-hand-middle-finger btn-outline-info" style="font-size: 300px"></i>
+    </div>
+    <div id="jsondata" style="display: none">
+        <h4>
+            Sorry this: <i class="fas fa-laugh-wink" style="font-size: 50px"></i>
+        </h4>
+
+        <span><%= result %></span>
+    </div>
+    <script>
+        setTimeout(() => {
+            document.getElementById("jsondata").style.display = "block";
+            document.getElementById("middlefinger").style.display = "none";
+        }, 3000);
+    </script>
+</div>

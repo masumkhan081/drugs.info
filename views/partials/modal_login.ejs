@@ -1,0 +1,35 @@
+<div id="login-modal" class="modal mt-5 rounded-4 bg-success bg-opacity-50">
+    <div class="modal-dialog ">
+        <div class="modal-content ">
+            <div style="background-color: rgb(205, 221, 235)">
+                <span class="  ps-2 pt-1 h6 text-center text-muted float-start ">Login System</span>
+                <button class="btn btn-sm bg-warning bg-opacity-25 float-end px-3 text-sm-center" onclick="document.getElementById( 'login-modal').style.display='none' "> Close </button>
+            </div>
+            <div class="modal-body pb-3 " style="background-color:azure;">
+                <%if(typeof errors !=='undefined' ){%>
+                    <ul>
+                        <%errors.map(err=>{%>
+                            <li class="text-danger">
+                                <%=err%>
+                            </li>
+                            <%})%>
+                    </ul>
+                    <%}%>
+                        <form action="/users/login" method="POST">
+                            <div class="form-group mb-2 mt-2">
+                                <label for="email" class="float-start">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="password" class="float-start">Password</label>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+                            </div>
+                            <button type="submit " class="btn bg-primary bg-opacity-75 float-end rounded w-50"> Login
+                            </button>
+                        </form>
+                        <span class="mt-4 ">New ? then <button class="btn btn-link btn-sm  "
+                                onclick="logintoRegister()">Register</button> first</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,176 @@
+<div class="m-4">
+  <div class="row">
+    <div class="col-md-3 col-sm-5">
+      <ul class="d-flex text-start flex-column list-unstyled me-2">
+        <li class="rounded text-success pb-1">
+          <i class="fas fa-th-list h4"></i
+          ><strong class="h5"> Whats Been Used:</strong>
+        </li>
+        <li class="rounded"><strong>Data Tier:</strong></li>
+        <li class="rounded">Mongodb</li>
+        <li class="rounded"><strong>Server Side:</strong></li>
+        <li class="rounded">express, express-ejs-layouts</li>
+        <li class="rounded">mongoose, dotenv, body-parser</li>
+        <li class="rounded">express-session, connect-flash</li>
+        <li class="rounded"><strong>Front:</strong></li>
+        <li class="rounded">bootstrap, fetch API</li>
+      </ul>
+    </div>
+    <div class="col-md-9 col-sm-7 border-1 border-start border-info rounded-3">
+      <ul
+        class="rounded d-flex text-start flex-column align-content-between list-unstyled"
+      >
+        <li class="rounded text-center text-success pb-1">
+          <i class="fas fa-hand-point-right h4"></i
+          ><strong class="h5"> Read Me</strong>
+        </li>
+        <li class="rounded"><strong>Features: </strong></li>
+        <li class="rounded">
+          Register, Login, Protected routes based on Json Web Token,
+          Add-Edit-Delete-Check existence of data, Ensuring other data
+          associated or not at deletion, Tabular view
+        </li>
+        <li class="rounded"><strong>Methods: </strong></li>
+        <li class="rounded">
+          <ul class="d-flex list-unstyled">
+            <li class="">
+              <span class="mark rounded px-1">Open Routes:</span>
+              <span class="text-success ps-2"> GET</span>
+            </li>
+            <li>
+              <span class="mark text-black rounded ms-3"
+                >Protected Routes:</span
+              >
+              <span class="text-success ps-2">POST, PUT, DELETE</span>
+              <a
+                href="http://localhost:3000/users/register"
+                class="ms-3 text-danger btn-sm btn bg-primary bg-opacity-25"
+              >
+                Register
+              </a>
+              <a
+                href="http://localhost:3000/users/login"
+                class="ms-3 text-danger btn-sm btn bg-primary bg-opacity-25"
+              >
+                Login
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="rounded"><strong>With Interface:</strong></li>
+        <li class="rounded">
+          Follow nav links to test features with a basic interface Like:
+          <span class="text-decoration-underline"
+            >Form, Button, Table etc.</span
+          >
+        </li>
+        <li class="rounded"><strong>Just JSON Result:</strong></li>
+        <li class="rounded">
+          Bellow routes are just to send out json result so that other app can
+          use it.
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row pt-4 text-start rounded-3 bg-warning bg-opacity-10">
+    <div class="col-md-6">
+      <h5>
+        <i class="fas fa-th-list"></i>
+        <span class="text-success fw-normal fst-italic text-center h6"
+          >Open Routes
+        </span>
+      </h5>
+      <ul class="list-unstyled text-start">
+        <li class=" ">
+          Get<a class="mx-5 text-decoration-none" href="/api/drugs"
+            >api/drugs</a
+          >
+        </li>
+        <li class="text-start">
+          Get<a class="mx-5 text-decoration-none" href="/api/drugs/id"
+            >api/drugs/id</a
+          >
+        </li>
+        <li class="text-start">
+          Get<a
+            class="mx-5 text-decoration-none"
+            href="/api/drugs/search?q=Laptop"
+            >api/drugs/search?q=doxi</a
+          >
+        </li>
+        <li class="text-start">
+          POST<a class="mx-4 text-decoration-none" href="/api/drugs/add"
+            >api/drugs/add</a
+          >
+        </li>
+        <li class="">
+          Get<a
+            class="mx-5 text-decoration-none"
+            href="/api/groups?skip=5&limit=10"
+            >api/drugs?skip=5&limit=10</a
+          >
+        </li>
+        <li class="">
+          Delete<a class="mx-5 text-decoration-none" href="/api/drugs/id"
+            >api/drugs/id</a
+          >
+        </li>
+        <li class="">
+          PUT<a class="mx-5 text-decoration-none" href="/drugs"
+            >go to navlink- 'drugs' and select one item from table to update</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h5>
+        <i class="fas fa-th-list"></i>
+        <span class="text-success h6 fw-normal fst-italic text-center"
+          >Routes Required JSON Web Token</span
+        >
+      </h5>
+
+      <ul class="list-unstyled text-start align-content-center">
+        <li class=" ">
+          Get<a class="mx-5 text-decoration-none" href="/api/drugs"
+            >api/drugs</a
+          >
+        </li>
+        <li class="">
+          Get<a class="mx-5 text-decoration-none" href="/api/drugs/id"
+            >api/drugs/id</a
+          >
+        </li>
+        <li class="">
+          Get<a
+            class="mx-5 text-decoration-none"
+            href="/api/drugs/search?q=Laptop"
+            >api/drugs/search?q=doxi</a
+          >
+        </li>
+        <li class="">
+          POST<a class="mx-4 text-decoration-none" href="/api/drugs/add"
+            >api/drugs/add</a
+          >
+        </li>
+        <li class="">
+          Get<a
+            class="mx-5 text-decoration-none"
+            href="/api/groups?skip=5&limit=10"
+            >api/drugs?skip=5&limit=10</a
+          >
+        </li>
+        <li class="">
+          Delete<a class="mx-5 text-decoration-none" href="/api/drugs/id"
+            >api/drugs/id</a
+          >
+        </li>
+        <li class="">
+          PUT<a class="mx-5 text-decoration-none" href="/drugs"
+            >go to navlink- 'drugs' and select one item from table to update</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
