@@ -80,10 +80,13 @@ app.get("drugs-info-wart.onrender.com/bla", (req, res) => {
 app.get("drugs-info.netlify.app/", (req, res) => {
   res.send("page_landing-netlify");
 });
-app.get("drugsinfo-production.up.railway.app/", (req, res) => {
+app.get("https://drugsinfo-production.up.railway.app/", (req, res) => {
   res.send("page_landing-railway");
 });
 app.get("https://drugs-info-pxuabi4to-masumkhan.vercel.app/", (req, res) => {
+  res.send("page_landing-netlify");
+});
+app.get("https://mk081.drugs.info/", (req, res) => {
   res.send("page_landing-netlify");
 });
 
