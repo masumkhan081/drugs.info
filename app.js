@@ -36,7 +36,7 @@ app.listen(process_env_PORT, () => {
 });
 // ------------------------------------------          view engine and layout
 app.set("view engine", "ejs");
-app.use(ejsLayout);
+app.use(ejsLayout); 
 
 // ------------------------------------------          middlewares
 app.use(express.json());
@@ -74,7 +74,7 @@ app.get("drugs-info-wart.onrender.com/", (req, res) => {
   res.send("page_landing");
 });
 
-https: app.get("drugs-info-wart.onrender.com/bla", (req, res) => {
+app.get("drugs-info-wart.onrender.com/bla", (req, res) => {
   res.send("page_landing");
 });
 app.get("drugs-info.netlify.app/", (req, res) => {

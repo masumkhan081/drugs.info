@@ -22,8 +22,9 @@ router.get("/dlt", (req, res) => {
   frmFunctions.handleDelete(req, res);
 });
 
-router.delete("/dlt", (req, res) => {
-  frmFunctions.handleDelete(req, res);
-});
+// router.delete("/dlt", (req, res) => {
+//   console.log("here-222");
+//   frmFunctions.handleDelete(req, res);
+// });
 
 module.exports = router;

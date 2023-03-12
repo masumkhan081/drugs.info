@@ -1,74 +1,109 @@
-<div id="edit-modal" class="modal mt-5 ps-3 text-center" style="background-color: beige">
-    <div class="modal-header">
-        <h5 class="modal-title">Modify Drug</h5>
-        <button class="btn btn-warning" onclick="document.getElementById( 'edit-modal').style.display='none' ">
-      <i class="fa fa-times-circle" aria-hidden="true "></i>
-    </button>
-    </div>
-    <div class="modal-body">
+<div id="edit-modal" class="modal mt-5 rounded">
+  <div class="modal-dialog" role="document ">
+    <div class="modal-content">
+      <div class="modal-header py-0 my-0 bg-dark">
+        <span class="modal-title text-warning fw-bold">Modify Drug</span>
+        <button
+          class="btn btn-sm px-2 text-warning py-0 border-0 border-bottom border-light"
+          onclick="document.getElementById( 'edit-modal').style.display='none' "
+        >
+          CLOSE
+        </button>
+      </div>
+      <div class="modal-body bg-success bg-opacity-10 pt-3">
         <form class="text-start" action="/drugs/edt" method="post">
-            <div class="form-group row mb-3">
-                <label for="edit_selectedcmp" class="col-sm-3 col-form-label">Manufacturers:</label
-        >
-        <div class="col-sm-9">
-          <select
-            name="cmpid"
-            id="edit_selectedcmp"
-            required
-            class="form-control rounded"
-            style="width: 250px"
-          >
-            <option value="" disabled selected>Select a manufacturer</option>
-            <%companies.forEach(cmp=> {%>
-            <option value="<%=cmp.id%>"><%=cmp.name%></option>
-            <% });%>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row mb-3">
-        <label for="edit_selectedgrp" class="col-sm-3 col-form-label"
-          >Groups:</label
-        >
-        <div class="col-sm-5">
-          <select
-            name="grpid"
-            id="edit_selectedgrp"
-            onchange="getGensByGrp('edit')"
-            required
-            class="form-control rounded"
-          >
-            <option value="" selected>Select a group</option>
-            <%groups.forEach(grp=> {%>
-            <option value="<%=grp.id%>"><%=grp.name%></option>
-            <% });%>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row mb-3">
-        <label for="edit_selectedgen" class="col-sm-3 col-form-label"
-          >Generics:</label
-        >
-        <div class="col-sm-9">
-          <select
-            name="genid"
-            id="edit_selectedgen"
-            required
-            class="form-control rounded"
-            style="width: 250px"
-          >
-            <option value="" disabled selected>Select a generic</option>
-          </select>
-        </div>
-      </div>
-      <label for="drgname" class="form-label">Name:</label>
-                <input id="edtdrgname" type="text text-sm" class="form-control text-start mb-3 w-50" required name="drgname" placeholder="Drug name" />
-                <input hidden type="text" id="edtdrgid" value="" name="drgid" />
-                <button class="btn btn-warning mt-1 w-25 rounded" onclick="document.getElementById( 'edit-modal').style.display='none' ">
-        Cancel
-      </button>
-                <button type="submit" class="btn btn-info mt-1 w-25 rounded">
-        Update
-      </button>
+          <div class="form-group row mb-3">
+            <label
+              for="edit_selectedcmp"
+              class="fw-bold col-sm-3 col-form-label"
+              >Manufacturers:</label
+            >
+            <div class="col-sm-8">
+              <select
+                name="cmpid"
+                id="edit_selectedcmp"
+                required
+                class="form-control rounded"
+              >
+                <option value="" disabled selected>
+                  Select a manufacturer
+                </option>
+                <%companies.forEach(cmp=> {%>
+                <option value="<%=cmp.id%>"><%=cmp.name%></option>
+                <% });%>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label
+              for="edit_selectedgrp"
+              class="fw-bold col-sm-3 col-form-label"
+              >Groups:</label
+            >
+            <div class="col-sm-8">
+              <select
+                name="grpid"
+                id="edit_selectedgrp"
+                onchange="getGensByGrp('edit')"
+                required
+                class="form-control rounded w-100"
+              >
+                <option value="" selected>Select a group</option>
+                <%groups.forEach(grp=> {%>
+                <option value="<%=grp.id%>"><%=grp.name%></option>
+                <% });%>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label
+              for="edit_selectedgen"
+              class="fw-bold col-sm-3 col-form-label"
+              >Generics:</label
+            >
+            <div class="col-sm-8">
+              <select
+                name="genid"
+                id="edit_selectedgen"
+                required
+                class="form-control rounded w-100"
+              >
+                <option value="" disabled selected>Select a generic</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label
+              for="edit_selectedgen"
+              class="fw-bold col-sm-3 col-form-label"
+              >Name:</label
+            >
+
+            <div class="col-sm-8">
+              <input
+                id="edtdrgname"
+                class="form-control text-start w-100"
+                required
+                name="drgname"
+                placeholder="Drug name"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <input hidden class="" id="edtdrgid" value="" name="drgid" />
+            </div>
+            <div class="col-sm-8">
+              <button
+                class="btn btn-sm bg-secondary bg-opacity-25 w-50 fw-bold"
+              >
+                U P D A T E
+              </button>
+            </div>
+          </div>
         </form>
-        </div>
+      </div>
     </div>
+  </div>
+</div>

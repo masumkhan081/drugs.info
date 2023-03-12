@@ -1,4 +1,4 @@
-<div class="m-5" style="min-height: 350px;">
+<div class="mx-5 mt-4" style="min-height: 450px;">
     <div class="d-flex  flex-row-reverse">
         <button onclick="show_addmodal()" id="id-drug-add" class="rounded-5 btn btn-outline-success btn-sm"><i
                 class="fa fa-plus-circle"></i> Formulation</button>
@@ -48,7 +48,7 @@
                     <form action="/formulations/dlt" method="DELETE">
                         <input type="hidden" id="dlt_frm_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
                         <input hidden type="text" id="dlt_frmid" value="" name="frmid" />
-                         <span class="shadow-sm badge bg-light bg-opacity-75 text-dark d-block mb-4 pb-1 text-center">Sure About
+                         <span class="shadow-sm badge bg-secondary bg-opacity-75 text-warning d-block mb-4 pb-1 text-center">Sure About
                             Deletion ? </span>
                         <button type="submit" class=" mb-3 btn btn-sm btn-danger w-25 rounded ">Delete</button>
                     </form>
@@ -57,42 +57,41 @@
             </div>
         </div>
     </div>
-    <div id="edt-modal" class="modal mt-5 rounded ">
+        <div id="edt-modal" class="modal mt-5 rounded ">
         <div class="modal-dialog " role="document ">
-            <div class="modal-content ">
-                <div class="modal-header ">
-                    <h5 class="modal-title ">Update Formulation</h5>
-                    <button class="btn btn-warning " onclick="document.getElementById( 'edt-modal').style.display='none' ">
-                        <i class="fa fa-times-circle " aria-hidden="true "></i>
-                    </button>
+            <div class="modal-content">
+                <div class="modal-header py-0 my-0 bg-dark">
+                    <span class="modal-title text-warning fw-bold">Correct Formulation Name</span>
+                    <button class="btn btn-sm px-2 text-light py-0"
+                        onclick="document.getElementById( 'edt-modal').style.display='none' "> CLOSE </button>
                 </div>
-                <div class="modal-body ">
+                <div class="modal-body bg-success bg-opacity-10 pt-3">
                     <form class="text-start " action="/formulations/edt" method="POST">
                         <input type="hidden" id="edt_frm_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
                         <input type="hidden" id="edt_frmid" value=" " name="frmid" />
                         <label for="frmname" class="form-label ">Name:</label>
                         <input id="edt_frmname" type="text " class="form-control " required name="frmname">
-                        <button type="submit" class="btn btn-sm btn-info mt-4 mb-3 w-50 rounded ">Save</button>
+                        <button class="btn btn-sm bg-secondary bg-opacity-25 mt-4 w-50 fw-bold">U P D A T E</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div id="add-modal" class="modal mt-5 rounded">
+       <div id="add-modal" class="modal mt-5 rounded ">
         <div class="modal-dialog " role="document ">
-            <div class="modal-content bg-light ">
-                <div class="modal-header ">
-                    <h5 class="modal-title ">New Formulation</h5>
-                    <button class="btn btn-warning " onclick="document.getElementById( 'add-modal').style.display='none' ">
-                        <i class="fa fa-times-circle " aria-hidden="true "></i>
-                    </button>
+            <div class="modal-content">
+                <div class="modal-header py-0 my-0 bg-dark">
+                    <span class="modal-title text-warning fw-bold">Add New Formulation </span>
+                    <button class="btn btn-sm px-2 text-warning py-0"
+                        onclick="document.getElementById( 'add-modal').style.display='none' "> CLOSE </button>
                 </div>
-                <div class="modal-body ">
+                <div class="modal-body bg-success bg-opacity-10 pt-3">
                     <form class="text-start " action="/formulations" method="POST">
-                        <input type="hidden" id="add_frm_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
-                        <label for="frmname" class="form-label ">Name:</label>
-                        <input type="text " class="form-control " required name="frmname" placeholder="ex: Tablet ">
-                        <button class="btn btn-sm btn-outline-dark mt-4 w-100 ">Save</button>
+                        <input type="hidden" id="add_frm_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> > <label
+                            for="frmname" class="fw-bold">Name:</label>
+                        <input type="text" class="w-75 border-0 d-block rounded-3 text-center" required name="frmname"
+                            placeholder="ex: Tablet">
+                        <button class="btn btn-sm bg-secondary bg-opacity-25 mt-4 w-50 fw-bold">S A V E</button>
                     </form>
                 </div>
             </div>

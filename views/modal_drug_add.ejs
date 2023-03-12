@@ -1,14 +1,28 @@
-<div id="add-modal" class="modal mt-5 mb-5 ps-5" style="background-color: rgb(226, 226, 206)">
-    <div class="modal-header">
-        <h5 class="modal-title border-1 border-bottom border-info">New Drug</h5>
-        <button class="btn btn-warning px-3" onclick="document.getElementById( 'add-modal').style.display='none' ">
-      X
+<div
+  id="add-modal"
+  class="modal mt-5 mb-5 ps-5"
+  style="background-color: rgb(207, 207, 193)"
+>
+  <div class="modal-header">
+    <h6
+      class="shoadow fw-bold modal-title border-1 border-bottom border-success rounded-pill px-4"
+    >
+      New Drug
+    </h6>
+    <button
+      class="btn btn-sm btn-secondary px-3 py-0"
+      onclick="document.getElementById( 'add-modal').style.display='none' "
+    >
+      close
     </button>
-    </div>
-    <div class="modal-body">
-        <form class="text-start" action="/drugs" method="POST">
-            <div class="form-group row mb-3">
-                <label for="selectedcmp" class="col-sm-3 col-form-label">Manufacturers:</label
+  </div>
+  <div class="modal-body">
+    <form class="text-start" action="/drugs" method="POST">
+      <div class="form-group row mb-3">
+        <label
+          for="selectedcmp"
+          class="col-md-2 col-sm-3 col-form-label fst-italic fw-bold"
+          >Manufacturers:</label
         >
         <div class="col-sm-6">
           <select required class="form-control rounded" name="selectedcmp">
@@ -20,7 +34,9 @@
         </div>
       </div>
       <div class="form-group row mb-3">
-        <label for="add_selectedgrp" class="col-sm-3 col-form-label"
+        <label
+          for="add_selectedgrp"
+          class="col-md-2 col-sm-3 col-form-label fst-italic fw-bold"
           >Groups:</label
         >
         <div class="col-sm-6">
@@ -39,7 +55,9 @@
         </div>
       </div>
       <div class="form-group row mb-3">
-        <label for="add_selectedgen" class="col-sm-3 col-form-label"
+        <label
+          for="add_selectedgen"
+          class="col-md-2 col-sm-3 col-form-label fst-italic fw-bold"
           >Generics:</label
         >
         <div class="col-sm-6">
@@ -54,19 +72,32 @@
         </div>
       </div>
       <div class="form-group row mb-3">
-        <label for="drgname" class="col-sm-3 form-label">Name:</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control text-sm-start mb-3" required name="drgname" placeholder="Drug name" />
-                </div>
-            </div>
-            <div class="form-group row mb-3">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6">
-                    <button type="submit" class="btn w-50 btn-outline-success mt-1 rounded">
-            Save
+        <label
+          for="drgname"
+          class="col-md-2 col-sm-3 form-label fst-italic fw-bold"
+          >Name:</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control text-sm-start mb-3"
+            required
+            name="drgname"
+            placeholder="Drug name"
+          />
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <div class="col-md-2 col-sm-3"></div>
+        <div class="col-sm-6">
+          <button
+            type="submit"
+            class="fw-bold btn w-50 btn btn-sm bg-success bg-opacity-75 mt-1 rounded"
+          >
+            S A V E
           </button>
-                </div>
-            </div>
-        </form>
-    </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

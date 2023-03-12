@@ -1,9 +1,10 @@
-<div class="m-5">
+<div class="m-5" style="min-height:380px">
     <div class="d-flex  flex-row-reverse">
         <button onclick="show_addmodal()" id="id-drug-add" class="rounded-5 btn bg-info bg-opacity-25 btn-sm"><i
-            class="fa fa-plus-circle"></i> Company</button>
+                class="fa fa-plus-circle"></i> Company</button>
         <div class="form-generic me-5 d-flex flex-row">
-            <input type="text" placeholder="Search" class="form-control bg-info bg-opacity-10 form-control-sm text-center border-0 rounded">
+            <input type="text" placeholder="Search"
+                class="form-control bg-info bg-opacity-10 form-control-sm text-center border-0 rounded">
             <button onclick="senderbender()" type="submit" class=" btn btn-sm bg-info bg-opacity-25 rounded-3"><i
                     class="fas fa-search"></i> </button>
         </div>
@@ -30,10 +31,13 @@
                         <%=companies[i].name %>
                     </td>
                     <td>
-                        <button onclick="show_editmodal(`<%=companies[i].name %>`,`<%=companies[i].id %>`)" class="btn btn-sm bg-success bg-opacity-75" style="font-size: 11px;"><i class="fas fa-pen"></i></button>
+                        <button onclick="show_editmodal(`<%=companies[i].name %>`,`<%=companies[i].id %>`)"
+                            class="btn btn-sm bg-success bg-opacity-75" style="font-size: 11px;"><i
+                                class="fas fa-pen"></i></button>
                     </td>
                     <td>
-                        <button onclick="show_dltmodal( `<%=companies[i].name %>`,`<%=companies[i].id %>`)" class="btn btn-sm btn-warning" style="font-size: 11px;"> <i
+                        <button onclick="show_dltmodal( `<%=companies[i].name %>`,`<%=companies[i].id %>`)"
+                            class="btn btn-sm btn-warning" style="font-size: 11px;"> <i
                                 class="fas fa-trash"></i></button>
                     </td>
                 </tr>
@@ -42,55 +46,57 @@
     </table>
     <div id="dlt-modal" class="modal mt-5 rounded">
         <div class="modal-dialog " role="document ">
-            <div class="modal-content ">
-                <div class="modal-body pb-4">
+            <div class="modal-content bg-light">
+                <div class="modal-body py-4 rounded-3 bg-info bg-opacity-10">
                     <form action="/companies/dlt" method="DELETE">
-                        <input type="hidden" id="dlt_cmp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
-                        <input hidden type="text" id="dlt_cmpid" value="" name="cmpid" />
-                        <h5 class="h4 mb-4 border-bottom border-2 border-warning">Sure About Deletion ? </h3>
-                            <button type="submit" class="float-start btn btn-sm btn-info w-25 rounded text-start">Delete</button>
+                        <input type="hidden" id="dlt_cmp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> > <input
+                            hidden type="text" id="dlt_cmpid" value="" name="cmpid" />
+                        <span class="badge text-success fst-italic d-block mb-4 pb-1 text-center">Sure About Deletion ?
+                        </span>
+                        <button type="submit"
+                            class=" fw-bold fst-italic mb-3 btn btn-sm btn-danger w-25 rounded ">Delete</button>
                     </form>
-                    <button onclick="document.getElementById('dlt-modal').style.display='none'" class="float-end btn btn-sm btn-warning w-25 rounded text-start "> Cancel </button>
+                    <button onclick="document.getElementById('dlt-modal').style.display='none'"
+                        class="fw-bold fst-italic btn btn-sm btn-outline-dark w-25 rounded "> Cancel </button>
                 </div>
             </div>
         </div>
     </div>
-    <div id="edt-modal" class="modal mt-5 rounded ">
+  <div id="edt-modal" class="modal mt-5 rounded ">
         <div class="modal-dialog " role="document ">
             <div class="modal-content ">
-                <div class="modal-header ">
-                    <h5 class="modal-title ">Update Formulation</h5>
-                    <button class="btn btn-warning " onclick="document.getElementById( 'edt-modal').style.display='none' ">
-                        <i class="fa fa-times-circle " aria-hidden="true "></i>
-                    </button>
+                <div class="modal-header py-0 my-0 bg-light">
+                    <span class="modal-title fw-bold">Correct Manufacturer Company </span>
+                    <button class="btn btn-sm px-2 bg-warning bg-opacity-50 text-black-75 py-0"
+                        onclick="document.getElementById( 'edt-modal').style.display='none' "> CLOSE </button>
                 </div>
-                <div class="modal-body ">
+                <div class="modal-body bg-success bg-opacity-10 pt-3">
                     <form class="text-start" action="/companies/edt" method="POST">
-                        <input type="hidden" id="edt_cmp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
-                        <input hidden type="text" id="edt_cmpid" value="" name="cmpid" />
-                        <label for="cmpname " class="form-label ">Name:</label>
-                        <input id="edt_cmpname" type="text " class="form-control " required name="cmpname">
-                        <button type="submit" class="btn btn-sm btn-info mt-4 mb-3 w-50 rounded ">Save</button>
+                        <input type="hidden" id="edt_cmp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> > <input
+                            hidden type="text" id="edt_cmpid" value="" name="cmpid" />
+                        <label for="cmpname " class="fw-bold ">Name:</label>
+                        <input id="edt_cmpname" type="text" class="w-75 border-0 d-block rounded-3 text-center" required name="cmpname">
+                       <button class="btn btn-sm bg-secondary bg-opacity-25 mt-4 w-50 fw-bold">U P D A T E</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div id="add-modal" class="modal mt-5 ">
+    <div id="add-modal" class="modal mt-5 rounded ">
         <div class="modal-dialog " role="document ">
             <div class="modal-content ">
-                <div class="modal-header ">
-                    <h5 class="modal-title ">New Formulation</h5>
-                    <button class="btn btn-warning " onclick="document.getElementById( 'add-modal').style.display='none' ">
-                        <i class="fa fa-times-circle " aria-hidden="true "></i>
-                    </button>
+                <div class="modal-header py-0 my-0 bg-light">
+                    <span class="modal-title fw-bold">Add Manufacturer Company </span>
+                    <button class="btn btn-sm px-2 bg-warning bg-opacity-50 text-black-75 py-0"
+                        onclick="document.getElementById( 'add-modal').style.display='none' "> CLOSE </button>
                 </div>
-                <div class="modal-body ">
+                <div class="modal-body bg-success bg-opacity-10 pt-3">
                     <form class="text-start " action="/companies" method="POST">
-                        <input type="hidden" id="add_cmp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
-                        <label for="cmpname" class="form-label ">Name:</label>
-                        <input type="text" class="form-control " required name="cmpname" placeholder="ex: Tablet ">
-                        <button class="btn btn-sm btn-outline-info mt-4 w-100 ">Save</button>
+                        <input type="hidden" id="add_cmp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> > <label
+                            for="cmpname" class="fw-bold">Name:</label>
+                        <input type="text" class="w-75 border-0 d-block rounded-3 text-center" required name="cmpname"
+                            placeholder="ex: Incepta Pharmaceutical Ltd ">
+                        <button class="btn btn-sm bg-secondary bg-opacity-25 mt-4 w-50 fw-bold">S A V E</button>
                     </form>
                 </div>
             </div>
@@ -99,12 +105,13 @@
     <div class="pt-3">
         <div class="border-1 text-start">
             <form id="cmp_pagenumbform" action="/companies" method="get">
-                <span class=" text-success text-start text-capitalize">Total <%=Math.ceil(count/limit)%> Pages; <%=count%> Generics</span>
-
+                <span class=" text-success text-start text-capitalize">Total <%=Math.ceil(count /limit)%> Pages;
+                        <%=count%> Generics</span>
                 <span class="text-success text-sm ms-2">
                     <strong>Go to page</strong>
                 </span>
-                <input id="cmp_pagenumb" value=<%=skip / limit + 1%> name="pagenumb" onchange="pageNumbSubmit()" type="number" style="width: 45px;height: 24px;" class="border-start border-end text-center d-inline" >
+                <input id="cmp_pagenumb" value=<%=skip / limit + 1%> name="pagenumb" onchange="pageNumbSubmit()"
+                type="number" style="width: 45px;height: 24px;" class="border-start border-end text-center d-inline" >
             </form>
         </div>
     </div>
@@ -171,7 +178,7 @@
         }, 3000)
 
 
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             let addmodal = document.getElementById('add-modal');
             let edtmodal = document.getElementById('edt-modal')
             let dltmodal = document.getElementById('dlt-modal')

@@ -1,6 +1,6 @@
-<div class="m-5">
+<div class="m-5" style="min-height: 380px;">
     <div class="d-flex  flex-row-reverse">
-        <button onclick="show_addmodal()" id="id-drug-add" class="rounded-5 btn btn-sm btn-outline-success w-25"><i
+        <button onclick="show_addmodal()" id="id-drug-add" class="rounded-5 btn btn-sm btn-outline-success "><i
                 class="fa fa-plus-circle"></i> Group</button>
         <div class="form-generic me-5 d-flex flex-row">
             <input type="text" placeholder="Search" class="form-control bg-success bg-opacity-10 form-control-sm text-center border-0 rounded">
@@ -44,54 +44,54 @@
     <div id="dlt-modal" class="modal mt-5 rounded">
         <div class="modal-dialog " role="document ">
             <div class="modal-content ">
-                <div class="modal-body pb-4">
+                <div class="modal-body py-4 rounded-3">
                     <form action="/groups/dlt" method="DELETE">
                         <input type="hidden" id="dlt_grp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
                         <input hidden type="text" id="dlt_grpid" value="" name="grpid" />
-                        <h5 class="h4 mb-4 border-bottom border-2 border-warning">Sure About Deletion ? </h3>
-                            <button type="submit" class="float-end btn btn-sm btn-info w-25 rounded text-start">Delete</button>
+                         <span class=" badge bg-success bg-opacity-25 text-dark d-block mb-4 pb-1 text-center">Sure About
+                            Deletion ? </span>
+                           <button type="submit" class=" mb-3 btn btn-sm btn-danger w-25 rounded ">Delete</button>
                     </form>
-                    <button onclick="document.getElementById('dlt-modal').style.display='none'" class="float-start btn btn-sm btn-warning w-25 rounded text-start "> Cancel </button>
-                </div>
+                    <button onclick="document.getElementById('dlt-modal').style.display='none'" class=" btn btn-sm btn-outline-dark w-25 rounded "> Cancel </button>
+                    </div>
             </div>
         </div>
     </div>
-    <div id="edt-modal" class="modal mt-5 rounded ">
+     <div id="edt-modal" class="modal mt-5 rounded ">
         <div class="modal-dialog " role="document ">
             <div class="modal-content ">
-                <div class="modal-header ">
-                    <h5 class="modal-title ">Update Group</h5>
-                    <button class="btn btn-warning " onclick="document.getElementById( 'edt-modal').style.display='none' ">
-                        <i class="fa fa-times-circle " aria-hidden="true "></i>
-                    </button>
+                <div class="modal-header py-0 my-0 bg-success">
+                    <span class="modal-title fw-bold">Correct Group Name</span>
+                    <button class="btn btn-sm px-2 text-light py-0"
+                        onclick="document.getElementById( 'edt-modal').style.display='none' "> CLOSE </button>
                 </div>
-                <div class="modal-body ">
+                <div class="modal-body bg-success bg-opacity-10 pt-3">
                     <form class="text-start" action="/groups/edt" method="POST">
                         <input type="hidden" id="edt_grp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
                         <input hidden id="edt_grpid" value="" name="grpid" />
-                        <label for="grpname" class="form-label ">Name:</label>
-                        <input id="edt_grpname" type="text " class="form-control " required name="grpname">
-                        <button type="submit" class="btn btn-sm btn-info mt-4 mb-3 w-50 rounded ">Save</button>
+                        <label for="grpname" class="fw-bold">Name:</label>
+                        <input id="edt_grpname" type="text " class="w-75 border-0 d-block rounded-3 text-center" required name="grpname">
+                        <button class="btn btn-sm bg-secondary bg-opacity-25 mt-4 w-50 fw-bold">U P D A T E</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div id="add-modal" class="modal mt-5 ">
+    <div id="add-modal" class="modal mt-5 rounded ">
         <div class="modal-dialog " role="document ">
             <div class="modal-content ">
-                <div class="modal-header ">
-                    <h5 class="modal-title ">New Group</h5>
-                    <button class="btn btn-warning " onclick="document.getElementById( 'add-modal').style.display='none' ">
-                        <i class="fa fa-times-circle " aria-hidden="true "></i>
-                    </button>
+                <div class="modal-header py-0 my-0 bg-secondary">
+                    <span class="modal-title fw-bold">Add Drug Class/Group </span>
+                    <button class="btn btn-sm px-2 bg-warning bg-opacity-50 text-black-75 py-0"
+                        onclick="document.getElementById( 'add-modal').style.display='none' "> CLOSE </button>
                 </div>
-                <div class="modal-body ">
+                <div class="modal-body bg-success bg-opacity-10 pt-3">
                     <form class="text-start " action="/groups" method="POST">
-                        <input type="hidden" id="add_grp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
-                        <label for="grpname" class="form-label ">Name:</label>
-                        <input type="text" class="form-control " required name="grpname" placeholder="ex: Tablet ">
-                        <button class="btn btn-sm btn-outline-info mt-4 w-100 ">Save</button>
+                        <input type="hidden" id="add_grp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> > <label
+                            for="grpname" class="fw-bold">Name:</label>
+                        <input type="text" class="w-75 border-0 d-block rounded-3 text-center" required name="grpname"
+                            placeholder="ex: proton pump inhibitors">
+                        <button class="btn btn-sm bg-secondary bg-opacity-25 mt-4 w-50 fw-bold">S A V E</button>
                     </form>
                 </div>
             </div>

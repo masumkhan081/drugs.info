@@ -98,22 +98,18 @@ function renderGeneric(req, res) {
     .limit(obj.limit)
     .skip(skip)
     .then((generics) => {
-      genericModel.count(
-        searchQuery,
-        function (err, count) {
-          res.render("page_generic", {
-            generics,
-            groups: obj.grps,
-            selectedgrp,
-            msg,
-            count,
-            skip,
-            limit: obj.limit,
-          });
-        }
-
-        //
-      );
+      genericModel.count(searchQuery, function (err, count) {
+        msg = count == 0 ? obj.msg_no_data : msg;
+        res.render("page_generic", {
+          generics,
+          groups: obj.grps,
+          selectedgrp,
+          msg,
+          count,
+          skip,
+          limit: obj.limit,
+        });
+      });
     })
     .catch((err) => {
       return err;
