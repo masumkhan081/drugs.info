@@ -73,7 +73,14 @@ app.get("drugs-info-wart.onrender.com/", (req, res) => {
   console.log("::  " + req.cookies["auth-token"]);
   res.send("page_landing");
 });
-
+app.get("drugs-info.vercel.app/", (req, res) => {
+  console.log("::  " + req.cookies["auth-token"]);
+  res.send("page_landing");
+});
+app.get("https://drugs-info.vercel.app/", (req, res) => {
+  console.log("::  " + req.cookies["auth-token"]);
+  res.send("page_landing");
+});
 app.get("drugs-info-wart.onrender.com/bla", (req, res) => {
   res.send("page_landing");
 });
