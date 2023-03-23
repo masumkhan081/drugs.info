@@ -81,14 +81,14 @@ app.get("https://drugs-info.vercel.app/", (req, res) => {
   console.log("::  " + req.cookies["auth-token"]);
   res.send("page_landing");
 });
-app.get("drugs-info-wart.onrender.com/bla", (req, res) => {
+app.get("https://kaleidoscopic-mandazi-24b005.netlify.app/", (req, res) => {
   res.send("page_landing");
 });
 app.get("drugs-info.netlify.app/", (req, res) => {
   res.send("page_landing-netlify");
 });
-app.get("https://drugsinfo-production.up.railway.app/", (req, res) => {
-  res.send("page_landing-railway");
+app.get("https://drugs-info-app.web.app/", (req, res) => {
+  res.send("page_landing-fireb");
 });
 app.get("https://drugs-info-pxuabi4to-masumkhan.vercel.app/", (req, res) => {
   res.send("page_landing-netlify");
