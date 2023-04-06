@@ -1,9 +1,10 @@
-<div class="m-5" style="min-height: 380px;">
+<div class="mx-5 mt-4" style="min-height: 475px;">
     <div class="d-flex  flex-row-reverse">
         <button onclick="show_addmodal()" id="id-drug-add" class="rounded-5 btn btn-sm btn-outline-success "><i
                 class="fa fa-plus-circle"></i> Group</button>
         <div class="form-generic me-5 d-flex flex-row">
-            <input type="text" placeholder="Search" class="form-control bg-success bg-opacity-10 form-control-sm text-center border-0 rounded">
+            <input type="text" placeholder="Search"
+                class="form-control bg-success bg-opacity-10 form-control-sm text-center border-0 rounded">
             <button type="submit" class="btn bg-success bg-opacity-25 btn-sm rounded-3"><i class="fas fa-search"></i>
             </button>
         </div>
@@ -13,7 +14,7 @@
     </div>
     <table style="width: 100%" class="mt-3 rounded-3">
         <thead>
-            <tr>
+            <tr class="bg-success bg-opacity-25 rounded">
                 <th scope="col">#</th>
                 <th scope="col">Group Name</th>
                 <th scope="col">Update</th>
@@ -30,11 +31,13 @@
                         <%=groups[i].name %>
                     </td>
                     <td>
-                        <button onclick="show_editmodal(`<%=groups[i].name %>`,`<%=groups[i].id %>`)" class="btn btn-sm btn-outline-info " style="font-size: 11px; ">
+                        <button onclick="show_editmodal(`<%=groups[i].name %>`,`<%=groups[i].id %>`)"
+                            class="btn btn-sm btn-outline-info " style="font-size: 11px; ">
                             <i class="fas fa-pen "></i></button>
                     </td>
                     <td>
-                        <button onclick="show_dltmodal(`<%=groups[i].name %>`,`<%=groups[i].id %>`)" class="btn btn-sm btn-outline-danger " style="font-size: 11px; "> <i
+                        <button onclick="show_dltmodal(`<%=groups[i].name %>`,`<%=groups[i].id %>`)"
+                            class="btn btn-sm btn-outline-danger " style="font-size: 11px; "> <i
                                 class="fas fa-trash "></i></button>
                     </td>
                 </tr>
@@ -46,18 +49,19 @@
             <div class="modal-content ">
                 <div class="modal-body py-4 rounded-3">
                     <form action="/groups/dlt" method="DELETE">
-                        <input type="hidden" id="dlt_grp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
-                        <input hidden type="text" id="dlt_grpid" value="" name="grpid" />
-                         <span class=" badge bg-success bg-opacity-25 text-dark d-block mb-4 pb-1 text-center">Sure About
+                        <input type="hidden" id="dlt_grp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> > <input
+                            hidden type="text" id="dlt_grpid" value="" name="grpid" />
+                        <span class=" badge bg-success bg-opacity-25 text-dark d-block mb-4 pb-1 text-center">Sure About
                             Deletion ? </span>
-                           <button type="submit" class=" mb-3 btn btn-sm btn-danger w-25 rounded ">Delete</button>
+                        <button type="submit" class=" mb-3 btn btn-sm btn-danger w-25 rounded ">Delete</button>
                     </form>
-                    <button onclick="document.getElementById('dlt-modal').style.display='none'" class=" btn btn-sm btn-outline-dark w-25 rounded "> Cancel </button>
-                    </div>
+                    <button onclick="document.getElementById('dlt-modal').style.display='none'"
+                        class=" btn btn-sm btn-outline-dark w-25 rounded "> Cancel </button>
+                </div>
             </div>
         </div>
     </div>
-     <div id="edt-modal" class="modal mt-5 rounded ">
+    <div id="edt-modal" class="modal mt-5 rounded ">
         <div class="modal-dialog " role="document ">
             <div class="modal-content ">
                 <div class="modal-header py-0 my-0 bg-success">
@@ -67,10 +71,11 @@
                 </div>
                 <div class="modal-body bg-success bg-opacity-10 pt-3">
                     <form class="text-start" action="/groups/edt" method="POST">
-                        <input type="hidden" id="edt_grp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> >
-                        <input hidden id="edt_grpid" value="" name="grpid" />
+                        <input type="hidden" id="edt_grp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> > <input
+                            hidden id="edt_grpid" value="" name="grpid" />
                         <label for="grpname" class="fw-bold">Name:</label>
-                        <input id="edt_grpname" type="text " class="w-75 border-0 d-block rounded-3 text-center" required name="grpname">
+                        <input id="edt_grpname" type="text " class="w-75 border-0 d-block rounded-3 text-center"
+                            required name="grpname">
                         <button class="btn btn-sm bg-secondary bg-opacity-25 mt-4 w-50 fw-bold">U P D A T E</button>
                     </form>
                 </div>
@@ -97,19 +102,17 @@
             </div>
         </div>
     </div>
-
-    <div class="pt-3">
-        <div class="border-1 text-start">
-            <form id="grp_pagenumbform" action="/groups" method="get">
-                <span class=" text-success text-start text-capitalize">Total <%=Math.ceil(count/limit)%> Pages; <%=count%> Generics</span>
-                <span class="text-success ms-2">
-                    <strong>Go to page</strong>
-                </span>
-                <input id="grp_pagenumb" onchange="pageNumbSubmit()" name="pagenumb" type="number" style="width: 45px;height: 28px;" class="border-start border-end text-center d-inline" value=<%=skip / limit + 1%> >
-            </form>
-        </div>
+    <div class="d-flex gap-1 mt-1 " style=" height: 30px;">
+        <span class="fw-bold text-success"> Page:</span>
+        <form id="grp_pagenumbform" action="/groups" method="get">
+            <input id="grp_pagenumb" onchange="pageNumbSubmit()" name="pagenumb" type="number"
+                style="width: 45px;height: 26px;" class="bg-secondary bg-opacity-25 border-0 text-center rounded-3"
+                value=<%=skip / limit + 1%> >
+        </form>
+        <span class="text-dark d-block text-start ms-1">
+            <%=Math.ceil(count /limit)%> Pages, <%=count%> Groups
+        </span>
     </div>
-
     <script>
         function pageNumbSubmit() {
             console.log(document.getElementById('grp_pagenumb').value)
@@ -167,11 +170,11 @@
         }
 
         setTimeout(() => {
-                const idmsg = "the_delivery_guy";
-                document.getElementById(idmsg).innerHTML = " "
-            }, 3000)
-            // Get the modal
-        window.onclick = function(event) {
+            const idmsg = "the_delivery_guy";
+            document.getElementById(idmsg).innerHTML = " "
+        }, 3000)
+        // Get the modal
+        window.onclick = function (event) {
             let addmodal = document.getElementById('add-modal');
             let edtmodal = document.getElementById('edt-modal')
             let dltmodal = document.getElementById('dlt-modal')

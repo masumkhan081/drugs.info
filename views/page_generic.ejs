@@ -1,4 +1,4 @@
-<div class="m-5" style="min-height: 400px;">
+<div class="mx-5 mt-4" style="min-height: 475px;">
     <div class="d-flex  flex-row-reverse">
         <button onclick="show_addmodal()" id="id-drug-add" class="rounded-5 btn btn-outline-success btn-sm"><i
                 class="fa fa-plus-circle"></i> Generic</button>
@@ -88,15 +88,14 @@
                 <div class="modal-header py-0 my-0 bg-secondary">
                     <span class="modal-title fw-bold">Update Generic</span>
                     <button class="btn btn-sm px-2 bg-warning bg-opacity-50 text-black-75 py-0"
-                        onclick="document.getElementById('edt-modal').style.display='none' ">
-                         close
-                    </button>
+                        onclick="document.getElementById('edt-modal').style.display='none' "> close </button>
                 </div>
                 <div class="modal-body bg-success bg-opacity-10">
                     <form class="text-start" action="/generics/update" method="post">
                         <input hidden name="current_selectedgrp" value=<%=selectedgrp%> > <input hidden name="pagenumb"
-                            value=<%=skip / limit + 1%> > <label > Groups:</label>
-                        <select required class=" text-center w-100 d-block border-1 rounded-3 mb-3" style="width: 250px; " name="selectedgrpid">
+                            value=<%=skip / limit + 1%> > <label> Groups:</label>
+                        <select required class=" text-center w-100 d-block border-1 rounded-3 mb-3"
+                            style="width: 250px; " name="selectedgrpid">
                             <option value="" disabled selected>Select a group</option>
                             <%groups.forEach(element=> {%> <option value="<%=element.id%>">
                                     <%=element.name%>
@@ -104,10 +103,9 @@
                                 <% });%>
                         </select>
                         <input hidden type="text" id="edt_genid" value="" name="genid" />
-
-                            <label for="genname " >Name:</label>
-                            <input id="edt_genname" class="text-center w-100 d-block border-1 rounded-3" required name="genname">
-
+                        <label for="genname ">Name:</label>
+                        <input id="edt_genname" class="text-center w-100 d-block border-1 rounded-3" required
+                            name="genname">
                         <button type="submit"
                             class="btn btn-sm bg-success bg-opacity-50 mt-4 mb-3 w-50 rounded fw-bold ">Save</button>
                     </form>
@@ -118,28 +116,28 @@
     <div id="add-modal" class="modal mt-5 ">
         <div class="modal-dialog " role="document ">
             <div class="modal-content ">
-               <div class="modal-header py-0 my-0 bg-success bg-opacity-50">
+                <div class="modal-header py-0 my-0 bg-success bg-opacity-50">
                     <span class="modal-title fw-bold">New Generic</span>
                     <button class="btn btn-sm px-2 bg-light bg-opacity-50 text-black-75 py-0"
-                        onclick="document.getElementById('add-modal').style.display='none' ">
-                         close
-                    </button>
+                        onclick="document.getElementById('add-modal').style.display='none' "> close </button>
                 </div>
                 <div class="modal-body bg-success bg-opacity-25">
                     <form class="text-start " action="/generics" method="POST">
                         <input hidden name="current_selectedgrp" value=<%=selectedgrp%> > <input hidden name="pagenumb"
-                            value=<%=skip / limit + 1%> > <label  > Groups:</label>
-                        <select name="selectedgrp" class=" text-center w-100 d-block border-1 rounded-3 mb-3"  style="width: 250px; " required>
+                            value=<%=skip / limit + 1%> > <label> Groups:</label>
+                        <select name="selectedgrp" class=" text-center w-100 d-block border-1 rounded-3 mb-3"
+                            style="width: 250px; " required>
                             <option value="" disabled selected>Select a group</option>
                             <%groups.forEach(element=> {%> <option value="<%=element.id%>">
                                     <%=element.name%>
                                 </option>
                                 <% });%>
                         </select>
-                        <label for="genname"  >Name:</label>
-                        <input type="text text-sm" class="text-center w-100 d-block border-1 rounded-3" required name="genname"
-                            placeholder="">
-                        <button type="submit" class="fw-bold btn btn-sm bg-success bg-opacity-50 mt-4 w-50 rounded-pill">Save</button>
+                        <label for="genname">Name:</label>
+                        <input type="text text-sm" class="text-center w-100 d-block border-1 rounded-3" required
+                            name="genname" placeholder="">
+                        <button type="submit"
+                            class="fw-bold btn btn-sm bg-success bg-opacity-50 mt-4 w-50 rounded-pill">Save</button>
                     </form>
                 </div>
             </div>
@@ -160,21 +158,16 @@
             </div>
         </div>
     </div>
-    <div>
-        <span class=" text-black-50 d-block text-start text-capitalize">Total <%=Math.ceil(count /limit)%> Pages;
-                <%=count%> Generics</span>
-        <div class="border-1 text-start">
-            <span class="text-success"> Go to page </span>
-            <form id="gen_pagenumbform" action="/generics" method="get">
-                <button onclick="pageDown()" style="width: 26px;height: 30px;"
-                    class="btn btn-sm  bg-black bg-opacity-10"><strong>-</strong></button>
-                <input type="text" id="selectedgrpid" name="selectedgrp" value="">
-                <input id="gen_pagenumb" onchange="pageNumbSubmit()" name="pagenumb" type="number"
-                    style="width: 30px;height: 30px;" class="border-0 text-center d-inline" value=<%=skip / limit + 1%>
-                > <button onclick="pageUp()" style="width: 26px;height: 30px;"
-                    class="btn btn-sm bg-black bg-opacity-10"><strong>+</strong></button>
-            </form>
-        </div>
+    <div class="d-flex gap-1 mt-1 " style=" height: 30px;">
+        <span class="fw-bold text-success"> Page:</span>
+        <form id="gen_pagenumbform" action="/generics" method="get">
+            <input id="gen_pagenumb" onchange="pageNumbSubmit()" name="pagenumb" type="number"
+                style="width: 45px;height: 26px;" class="bg-secondary bg-opacity-25 border-0 text-center rounded-3"
+                value=<%=skip / limit + 1%> >
+        </form>
+        <span class="text-dark d-block text-start ms-1">
+            <%=Math.ceil(count /limit)%> Pages, <%=count%> Groups
+        </span>
     </div>
     <script>
         function pageNumbSubmit() {

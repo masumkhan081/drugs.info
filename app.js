@@ -14,7 +14,7 @@ const { setGroups } = require("./controllers/genController");
 // -------------------------------------------            -connection
 const process_env_URI =
   "mongodb+srv://mkhan:passme@cluster-drug-stock.hcrtyb4.mongodb.net/?retryWrites=true&w=majority";
-const process_env_PORT = 3000;
+const process_env_PORT = 5000;
 mongoose.connect(process_env_URI, { useNewUrlParser: true });
 const conn = mongoose.connection;
 conn.on("connected", function () {
@@ -65,37 +65,30 @@ app.use("/formulations", require("./routes/frmRoutes"));
 app.use("/companies", require("./routes/cmpRoutes"));
 app.use("/api", require("./routes/indexRoute"));
 //
-app.get("/", (req, res) => {
-  console.log("::  " + req.cookies["auth-token"]);
-  res.render("page_landing");
-});
-app.get("drugs-info-wart.onrender.com/", (req, res) => {
-  console.log("::  " + req.cookies["auth-token"]);
-  res.send("page_landing");
-});
-app.get("drugs-info.vercel.app/", (req, res) => {
-  console.log("::  " + req.cookies["auth-token"]);
-  res.send("page_landing");
-});
-app.get("https://drugs-info.vercel.app/", (req, res) => {
-  console.log("::  " + req.cookies["auth-token"]);
-  res.send("page_landing");
-});
-app.get("https://kaleidoscopic-mandazi-24b005.netlify.app/", (req, res) => {
-  res.send("page_landing");
-});
-app.get("drugs-info.netlify.app/", (req, res) => {
-  res.send("page_landing-netlify");
-});
-app.get("https://drugs-info-app.web.app/", (req, res) => {
-  res.send("page_landing-fireb");
-});
-app.get("https://drugs-info-pxuabi4to-masumkhan.vercel.app/", (req, res) => {
-  res.send("page_landing-netlify");
-});
-app.get("https://mk081.drugs.info/", (req, res) => {
-  res.send("page_landing-netlify");
-});
+
+//
+app.get(
+  "/",
+  (req, res, next) => {
+    console.log("miflwr reached ...");
+    if (req.cookies["auth-token"]) {
+      console.log("mdlwr-reached-token");
+      res.render("page_drug", { authstatus: "true" });
+    } else {
+      console.log("mdlwr-reached-no_token");
+      res.render("page_login", { authstatus: "false" });
+    }
+    next();
+  },
+  (req, res) => {
+    console.log("::  " + req.cookies["auth-token"]);
+    if (req.cookies["auth-token"]) {
+      res.render("page_landing", { authstatus: "true" });
+    } else {
+      res.render("page_landing", { authstatus: "false" });
+    }
+  }
+);
 
 // module.exports.handler = serverless(app);
 /*

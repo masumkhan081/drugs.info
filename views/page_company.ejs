@@ -1,4 +1,4 @@
-<div class="m-5" style="min-height:380px">
+<div class="mx-5 mt-4" style="min-height: 475px;">
     <div class="d-flex  flex-row-reverse">
         <button onclick="show_addmodal()" id="id-drug-add" class="rounded-5 btn bg-info bg-opacity-25 btn-sm"><i
                 class="fa fa-plus-circle"></i> Company</button>
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-  <div id="edt-modal" class="modal mt-5 rounded ">
+    <div id="edt-modal" class="modal mt-5 rounded ">
         <div class="modal-dialog " role="document ">
             <div class="modal-content ">
                 <div class="modal-header py-0 my-0 bg-light">
@@ -75,8 +75,9 @@
                         <input type="hidden" id="edt_cmp_pagenumb" name="pagenumb" value=<%=skip / limit + 1%> > <input
                             hidden type="text" id="edt_cmpid" value="" name="cmpid" />
                         <label for="cmpname " class="fw-bold ">Name:</label>
-                        <input id="edt_cmpname" type="text" class="w-75 border-0 d-block rounded-3 text-center" required name="cmpname">
-                       <button class="btn btn-sm bg-secondary bg-opacity-25 mt-4 w-50 fw-bold">U P D A T E</button>
+                        <input id="edt_cmpname" type="text" class="w-75 border-0 d-block rounded-3 text-center" required
+                            name="cmpname">
+                        <button class="btn btn-sm bg-secondary bg-opacity-25 mt-4 w-50 fw-bold">U P D A T E</button>
                     </form>
                 </div>
             </div>
@@ -102,18 +103,16 @@
             </div>
         </div>
     </div>
-    <div class="pt-3">
-        <div class="border-1 text-start">
-            <form id="cmp_pagenumbform" action="/companies" method="get">
-                <span class=" text-success text-start text-capitalize">Total <%=Math.ceil(count /limit)%> Pages;
-                        <%=count%> Generics</span>
-                <span class="text-success text-sm ms-2">
-                    <strong>Go to page</strong>
-                </span>
-                <input id="cmp_pagenumb" value=<%=skip / limit + 1%> name="pagenumb" onchange="pageNumbSubmit()"
-                type="number" style="width: 45px;height: 24px;" class="border-start border-end text-center d-inline" >
-            </form>
-        </div>
+    <div class="d-flex gap-1 mt-1 " style=" height: 30px;">
+        <span class="fw-bold text-success"> Page:</span>
+        <form id="cmp_pagenumbform" action="/companies" method="get">
+            <input id="cmp_pagenumb" value=<%=skip / limit + 1%> name="pagenumb" onchange="pageNumbSubmit()"
+            type="number" style="width: 45px;height: 26px;" class="bg-secondary bg-opacity-25 border-0 text-center
+            rounded-3" value= <%=skip / limit + 1%> >
+        </form>
+        <span class="text-dark d-block text-start ms-1">
+            <%=Math.ceil(count /limit)%> Pages, <%=count%> Manufacturers
+        </span>
     </div>
     <script>
         function pageNumbSubmit() {

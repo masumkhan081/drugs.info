@@ -1,6 +1,7 @@
-<div style="min-height: 300px;">
-    <div class="row mt-5  ">
-        <div class="col-11 col-md-5 col-sm-8 mx-auto shadow-sm rounded-3  ">
+<div style="min-height: 475px;">
+    <div class="container row mt-5 d-flex justify-content-around ">
+        <div class="col-md-5 col-sm-8 col-11 m-auto rounded pb-2 shadow-sm  ">
+            <span class="badge mark d-block text-center mb-2 text-muted rounded">User Log in</span>
             <form action="/users/signin" method="POST">
                 <div class=" form-group my-3  ">
                     <label for=" email " class=" float-start ">Email</label>
@@ -13,20 +14,43 @@
                         value=" <%=typeof password !='undefined' ? password : '123456'%>" />
                 </div>
                 <div class="d-flex justify-content-between">
-                    <button type="submit" class=" mt-3 btn bg-success bg-opacity-50 rounded w-50"> Login </button>
-                    <strong class=" mt-4 ms-1 ms-sm-3">No Account? <a href="/users/register"
-                            class="text-decoration-none text-primary">Sign Up</a></strong>
+                    <button type="submit" class="btn btn-sm mt-3 btn-outline-success rounded w-50 fs-6 fw-bold"> Login
+                    </button>
+                    <span class=" mt-4 ms-1 ms-sm-3">No Account? <a href="/users/register"
+                            class="text-decoration-none text-primary">Sign Up</a></span>
                 </div>
                 <span class="d-block text-start my-2 text-danger">
                     <%= msg %>
                 </span>
             </form>
         </div>
-        <script>
-            setTimeout(() => {
-                const idmsg = "the_delivery_guy";
-                document.getElementById(idmsg).innerHTML = " "
-            }, 3000)
-        </script>
+        <div class="col-md-4 pb-4 col-sm-6 rounded-3 ">
+            <span class=" text-center d-block "> Or, Quick Sign Up With: </span>
+            <div class="py-4 d-flex flex-column justify-content-around align-items-center gap-3 h-100">
+                <a href="auth/linkedin" class="fw-bold btn btn-sm w-75 bg-success bg-opacity-10 shadow-sm rounded-3"><i
+                        class="fa-brands fa-linkedin"></i> Linkdin </a>
+                <a href="/auth/google" class="fw-bold btn btn-sm w-75 bg-light bg-opacity-50 shadow-sm"> <i
+                        class="fa-brands fa-google text-success"></i> Google</a>
+                <a href="/auth/facebook" class="fw-bold w-75 bg-info shadow bg-opacity-10 btn btn-sm shadow-sm"> <i
+                        class="fa-brands fa-facebook text-primary"></i> Facebook </a>
+                <a href="/auth/github" class="fw-bold w-75 bg-secondary bg-opacity-10 shadow btn btn-sm shadow-sm"> <i
+                        class="fa-brands fa-github "></i> Github </a>
+                <a href="" class="fw-bold w-75 bg-secondary bg-opacity-10 shadow btn btn-sm shadow-sm"><i
+                        class="fa-brands fa-yahoo"></i> Yahoo </a>
+                <form method="POST"
+                    class="w-75 mt-0 d-flex flex-column gap-2 rounded-3 fw-bold text-center text-black-50 ">
+                    <label>Or Use Phone Number</label>
+                    <input disabled=true class="bg-light bg-opacity-50 border-0" placeholder="Phone Number"></input>
+                    <button disabled=true id="sign-in-button" type="submit"
+                        class="w-100 btn btn-sm bg-secondary bg-opacity-50"> Signin </button>
+                </form>
+            </div>
+        </div>
     </div>
+    <script>
+        setTimeout(() => {
+            const idmsg = "the_delivery_guy";
+            document.getElementById(idmsg).innerHTML = " "
+        }, 3000)
+    </script>
 </div>

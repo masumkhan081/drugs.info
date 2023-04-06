@@ -1,10 +1,10 @@
-<div class="mx-2 p-3 mt-3 bg-info rounded-3 bg-opacity-10" style="min-height: 480px;">
+<div class="mx-2 p-3 mt-3 bg-success bg-gradient rounded-3 bg-opacity-10" style="min-height: 500px;">
     <div class="d-flex  flex-row-reverse">
         <button onclick="show_addmodal()" id="id-drug-add" class="rounded-5 btn btn-sm bg-primary bg-opacity-25"><i
                 class="fa fa-plus-circle"></i> Drug</button>
         <div class="form-generic d-flex flex-row">
-            <input type="text" placeholder="Search" class="border-0 text-center bg-primary bg-opacity-25">
-            <button type="submit" class="me-5 btn bg-primary bg-opacity-25 btn-sm border-0 border-start border-secondary"><i
+            <input type="text" placeholder="Search" class="border-0 text-center bg-primary bg-opacity-10">
+            <button type="submit" class="me-5 btn bg-primary bg-opacity-25 btn-sm  "><i
                     class="px-2 float-end fas fa-search"></i> </button>
         </div>
         <span class="text-sm-start me-5 text-success " id="the_delivery_guy">
@@ -39,15 +39,19 @@
                         <%=drugs[i].cmp_name %>
                     </td>
                     <td>
-                        <a href="/drugs?drgid=<%=drugs[i].drg_id%>&pagenumb=<%=skip / limit + 1%>" class="btn btn-sm btn-info " style="font-size: 11px; ">
+                        <a href="/drugs?drgid=<%=drugs[i].drg_id%>&pagenumb=<%=skip / limit + 1%>"
+                            class="btn btn-sm btn-info " style="font-size: 11px; ">
                             <i class="fas fa-info    "></i></a>
                     </td>
                     <td>
-                        <button onclick="show_editmodal(`<%=drugs[i].drg_id%>`,`<%=drugs[i].drg_name %>`,`<%=drugs[i].cmp_id %>`,`<%=drugs[i].gen_id %>` )" class="btn btn-sm btn-success " style="font-size: 10px; ">
+                        <button
+                            onclick="show_editmodal(`<%=drugs[i].drg_id%>`,`<%=drugs[i].drg_name %>`,`<%=drugs[i].cmp_id %>`,`<%=drugs[i].gen_id %>` )"
+                            class="btn btn-sm btn-success " style="font-size: 10px; ">
                             <i class="fas fa-pen "></i></button>
                     </td>
                     <td>
-                        <button onclick="show_dltmodal(`<%=drugs[i].drg_id%>`)" class="btn btn-sm btn-warning " style="font-size: 10px; "> <i class="fas fa-trash "></i></button>
+                        <button onclick="show_dltmodal(`<%=drugs[i].drg_id%>`)" class="btn btn-sm btn-warning "
+                            style="font-size: 10px; "> <i class="fas fa-trash "></i></button>
                     </td>
                 </tr>
                 <% } %>
@@ -59,9 +63,11 @@
                 <span class="text-success ms-2">
                     <strong> Page:</strong>
                 </span>
-                <input id="drg_pagenumb" onchange="pageNumbSubmit()" name="pagenumb" type="number" value=<%=skip / limit + 1%> style="width: 50px;height: 24px;" class="rounded border-0 bg-primary bg-opacity-10 text-center border-success border-bottom-2
-                d-inline" >
-                <span class=" text-success text-start text-capitalize">( <%=Math.ceil(count/limit )%> Pages, <%=count%> Drugs)</span>
+                <input id="drg_pagenumb" onchange="pageNumbSubmit()" name="pagenumb" type="number" value=<%=skip / limit
+                    + 1%> style="width: 50px;height: 24px;" class="rounded border-0 bg-primary bg-opacity-10 text-center
+                border-success border-bottom-2 d-inline" > <span class=" text-success text-start text-capitalize">
+                    <%=Math.ceil(count /limit )%> Pages, <%=count%> Drugs
+                </span>
             </form>
         </div>
     </div>
@@ -72,7 +78,6 @@
                     <%-include('modal_drug_edit')%>
                         <%-include('modal_drug_add')%>
                             <%-include('modal_drug_delete')%>
-
                                 <!--  -->
                                 <script>
                                     function show_editmodal(drg_id, drg_name, cmp_id, genid) {
@@ -156,38 +161,38 @@
                                         }
                                         console.log(" at least here ! " + id_selectedgrp)
                                         fetch("/drugs/gensbygrp", {
-                                                method: "post",
-                                                body: JSON.stringify({
-                                                    grpid: id_selectedgrp
-                                                }),
-                                                headers: {
-                                                    'Content-type': 'application/json',
-                                                }
-                                            }).then(res =>
-                                                res.json()
-                                            ).then(json => {
-                                                console.log(json)
-                                                let arr = json.gens;
-                                                if (sign === 'add') {
-                                                    select = document.getElementById('add_selectedgen');
-                                                }
-                                                if (sign === 'edit') {
-                                                    select = document.getElementById('edit_selectedgen');
-                                                }
-                                                select.innerHTML = " "
-                                                var opt = document.createElement('option');
-                                                opt.value = "";
-                                                opt.innerHTML = "Select a generic";
-                                                // opt.disabled = true
-                                                opt.selected = true
+                                            method: "post",
+                                            body: JSON.stringify({
+                                                grpid: id_selectedgrp
+                                            }),
+                                            headers: {
+                                                'Content-type': 'application/json',
+                                            }
+                                        }).then(res =>
+                                            res.json()
+                                        ).then(json => {
+                                            console.log(json)
+                                            let arr = json.gens;
+                                            if (sign === 'add') {
+                                                select = document.getElementById('add_selectedgen');
+                                            }
+                                            if (sign === 'edit') {
+                                                select = document.getElementById('edit_selectedgen');
+                                            }
+                                            select.innerHTML = " "
+                                            var opt = document.createElement('option');
+                                            opt.value = "";
+                                            opt.innerHTML = "Select a generic";
+                                            // opt.disabled = true
+                                            opt.selected = true
+                                            select.appendChild(opt);
+                                            for (var i = 0; i <= json.count; i++) {
+                                                opt = document.createElement('option');
+                                                opt.value = arr[i]._id;
+                                                opt.innerHTML = arr[i].name;
                                                 select.appendChild(opt);
-                                                for (var i = 0; i <= json.count; i++) {
-                                                    opt = document.createElement('option');
-                                                    opt.value = arr[i]._id;
-                                                    opt.innerHTML = arr[i].name;
-                                                    select.appendChild(opt);
-                                                }
-                                            })
+                                            }
+                                        })
                                             .catch(err => {
                                                 console.log(err)
                                             })
@@ -209,7 +214,7 @@
                                         document.getElementById(idmsg).innerHTML = " "
                                     }, 3000)
 
-                                    window.onclick = function(event) {
+                                    window.onclick = function (event) {
                                         var addmodal = document.getElementById('add-modal');
                                         var dltmodal = document.getElementById('dlt-modal');
                                         var editmodal = document.getElementById('edit-modal');

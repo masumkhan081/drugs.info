@@ -5,9 +5,7 @@ const bcrypt = require("bcryptjs");
 const { tokenModel } = require("../models/userModel");
 const { tokenValid } = require("../routes/verifyRoute");
 const jwt = require("jsonwebtoken");
-//
-//
-
+// 
 signinRouter.get("/signin", (req, res) => {
   res.render("page_login", { msg: "" });
 });
