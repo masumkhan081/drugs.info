@@ -24,6 +24,7 @@ function renderGroups(req, res) {
           msg,
           count,
           skip,
+          authstatus: false,
           limit: obj.limit,
         });
       });

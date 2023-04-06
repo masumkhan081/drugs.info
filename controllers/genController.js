@@ -106,6 +106,7 @@ function renderGeneric(req, res) {
           selectedgrp,
           msg,
           count,
+          authstatus: false,
           skip,
           limit: obj.limit,
         });

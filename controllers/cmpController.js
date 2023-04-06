@@ -23,6 +23,7 @@ function renderCompanies(req, res) {
           msg,
           count,
           skip,
+          authstatus:false,
           limit: obj.limit,
         });
       });

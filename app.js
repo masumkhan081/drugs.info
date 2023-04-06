@@ -69,17 +69,17 @@ app.use("/api", require("./routes/indexRoute"));
 //
 app.get(
   "/",
-  (req, res, next) => {
-    console.log("miflwr reached ...");
-    if (req.cookies["auth-token"]) {
-      console.log("mdlwr-reached-token");
-      res.render("page_drug", { authstatus: "true" });
-    } else {
-      console.log("mdlwr-reached-no_token");
-      res.render("page_login", { authstatus: "false" });
-    }
-    next();
-  },
+  // (req, res, next) => {
+  //   console.log("miflwr reached ...");
+  //   if (req.cookies["auth-token"]) {
+  //     console.log("mdlwr-reached-token");
+  //     res.render("page_drug", { authstatus: "true" });
+  //   } else {
+  //     console.log("mdlwr-reached-no_token");
+  //     res.render("page_login", { authstatus: "false" });
+  //   }
+  //   next();
+  // },
   (req, res) => {
     console.log("::  " + req.cookies["auth-token"]);
     if (req.cookies["auth-token"]) {
