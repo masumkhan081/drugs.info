@@ -4,9 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js",
-    "build": "node build"
+    "start": "nodemon app",
+    "build": "npm build"
   },
   "keywords": [],
   "author": "",
@@ -31,7 +30,7 @@
     "passport-linkedin-oauth2": "^2.0.0",
     "passport-local": "^1.0.0"
   },
-  "devDependencies": { 
+  "devDependencies": {
     "nodemon": "^2.0.19"
   }
 }

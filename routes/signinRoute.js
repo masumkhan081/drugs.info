@@ -5,9 +5,25 @@ const bcrypt = require("bcryptjs");
 const { tokenModel } = require("../models/userModel");
 const { tokenValid } = require("../routes/verifyRoute");
 const jwt = require("jsonwebtoken");
-// 
+//
 signinRouter.get("/signin", (req, res) => {
-  res.render("page_login", { msg: "" });
+  if (
+    req.user == undefined ||
+    req.user.status == "null" ||
+    req.user.status == "not-verified"
+  ) {
+    res.render("page_login", {
+      loggedin: false,
+      data: "null",
+      msg: "",
+    });
+  } else if (req.user.status == "logged-in") {
+    res.render("page_landing", {
+      loggedin: true,
+      data: req.user,
+      msg: "",
+    });
+  }
 });
 
 signinRouter.post("/signin", (req, res) => {

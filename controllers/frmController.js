@@ -12,7 +12,6 @@ function renderFormulations(req, res, searchObj = { name: "" }) {
     skip = obj.limit * pagenumb - obj.limit;
     // console.log(obj.limit + limit + "skip:   " + skip)
   }
-
   formulationModel
     .find({
       name: { $regex: new RegExp(searchObj.name, "gi") },

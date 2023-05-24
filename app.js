@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const session = require("express-session");
-// const serverless = require("serverless-http");
+const passport = require("passport");
 const flash = require("connect-flash");
 require("dotenv").config();
 const bodyParser = require("body-parser");
@@ -12,10 +12,8 @@ const { verifyRoute } = require("./routes/verifyRoute");
 const { resetRoute } = require("./routes/resetRoute");
 const { setGroups } = require("./controllers/genController");
 // -------------------------------------------            -connection
-const process_env_URI =
-  "mongodb+srv://mkhan:passme@cluster-drug-stock.hcrtyb4.mongodb.net/?retryWrites=true&w=majority";
-const process_env_PORT = 5000;
-mongoose.connect(process_env_URI, { useNewUrlParser: true });
+
+mongoose.connect(process.env.URI, { useNewUrlParser: true });
 const conn = mongoose.connection;
 conn.on("connected", function () {
   console.log("database is connected successfully");
@@ -31,8 +29,8 @@ conn.on("error", () => {
 
 // --------------------------------------------        server-start
 const app = express();
-app.listen(process_env_PORT, () => {
-  console.log(`port:${process_env_PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`port:${process.env.PORT}`);
 });
 // ------------------------------------------          view engine and layout
 app.set("view engine", "ejs");
@@ -41,21 +39,24 @@ app.use(ejsLayout);
 // ------------------------------------------          middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
+const oneDay = 1000 * 60 * 60 * 24;
 app.use(
   session({
-    secret: "pokath",
-    resave: true,
+    secret: process.env.SESSION_SECRET,
     saveUninitialized: true,
+    cookie: { maxAge: oneDay },
+    resave: false,
   })
 );
 app.use(flash());
 //   ------------------------------------------            routes
-app.use("/users", require("./routes/signupRoute"));
-app.use("/users", require("./routes/signinRoute"));
+app.use("", require("./routes/home"));
+app.use("", require("./routes/signupRoute"));
+app.use("", require("./routes/signinRoute"));
 app.use("/verify", verifyRoute);
 app.use("/reset", resetRoute);
 app.use("/drugs", require("./routes/drgRoutes"));
@@ -63,45 +64,18 @@ app.use("/groups", require("./routes/grpRoutes"));
 app.use("/generics", require("./routes/genRoutes"));
 app.use("/formulations", require("./routes/frmRoutes"));
 app.use("/companies", require("./routes/cmpRoutes"));
-app.use("/api", require("./routes/indexRoute"));
+app.use("/api", require("./routes/json"));
+app.use("", require("./routes/google"));
+//app.use("", require("./routes/linkedin"));
+//app.use("", require("./routes/facebook"));
+//app.use("", require("./routes/github"));
 //
+app.use(passport.initialize());
+app.use(passport.session());
 
-//
-app.get(
-  "/",
-  // (req, res, next) => {
-  //   console.log("miflwr reached ...");
-  //   if (req.cookies["auth-token"]) {
-  //     console.log("mdlwr-reached-token");
-  //     res.render("page_drug", { authstatus: "true" });
-  //   } else {
-  //     console.log("mdlwr-reached-no_token");
-  //     res.render("page_login", { authstatus: "false" });
-  //   }
-  //   next();
-  // },
-  (req, res) => {
-    console.log("::  " + req.cookies["auth-token"]);
-    if (req.cookies["auth-token"]) {
-      res.render("page_landing", { authstatus: "true" });
-    } else {
-      res.render("page_landing", { authstatus: "false" });
-    }
-  }
-);
-
-// module.exports.handler = serverless(app);
 /*
-
-
-"dev": "nodemon app.js",
-    "install": "npm install",
-    "build": "npm build"
-
-
 git init
 git add *
 git commit -m "msg"
 git push
-
 */
