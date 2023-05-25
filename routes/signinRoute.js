@@ -13,13 +13,13 @@ signinRouter.get("/signin", (req, res) => {
     req.user.status == "not-verified"
   ) {
     res.render("page_login", {
-      loggedin: false,
+      authstatus : false,
       data: "null",
       msg: "",
     });
   } else if (req.user.status == "logged-in") {
     res.render("page_landing", {
-      loggedin: true,
+      authstatus : true,
       data: req.user,
       msg: "",
     });

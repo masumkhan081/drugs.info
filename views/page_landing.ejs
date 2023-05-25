@@ -1,112 +1,183 @@
-<div class="container-fluid mx-2 pt-3">
-  <div class="row  ">
-    <div class="col-md-3 col-sm-5 rounded-3">
-      <ul class="d-flex text-start flex-column list-unstyled me-2">
-        <li class="rounded text-success pb-1 text-center">
-          <i class="fas fa-th-list h4"></i><strong class="h5 "> Whats Been Used:</strong>
+<div class="container pt-3">
+  <div class="row" style="min-height: 475px;">
+    <div class="col-md-4 col-sm-5 rounded-3">
+      <ul class="d-flex text-start flex-column list-unstyled ms-auto  ">
+        <li class="rounded text-success mb-sm-3 mb-1 text-center">
+          <i class="fas fa-th-list h4 me-1"></i
+          ><strong class="h5 ">Whats Been Used</strong>
         </li>
-        <li class="rounded"><strong>Data Tier:</strong></li>
-        <ul>
-          <li class="rounded">Mongodb Atlas</li>
-        </ul>
-        <li class="rounded"><strong>Front:</strong></li>
-        <ul>
-          <li class="rounded">bootstrap, fetch API</li>
-        </ul>
-        <li class="rounded"><strong>Server Side:</strong></li>
-        <ul>
-          <li class="rounded">express, express-ejs-layouts</li>
-          <li class="rounded">mongoose</li>
-          <li class="rounded">express-session, connect-flash</li>
-          <li class="rounded">nodemailer</li>
-          <li class="rounded">jwt, bcryptjs</li>
-          <li>yes: <%=loggedin%>
+        <ul class="list-group list-unstyled rounded text-center py-2 bg-success bg-opacity-10 ">
+          <li class="rounded list-group-item-success active">
+            <strong>Data Tier:</strong>
           </li>
+          <li class="rounded list-group-item-success ">Mongodb Atlas</li>
+          <li class="rounded list-group-item-success active">
+            <strong>Front-end:</strong>
+          </li>
+          <li class="rounded list-group-item-success">bootstrap, fetch API</li>
+          <li class="rounded list-group-item-success active">
+            <strong>Server Side:</strong>
+          </li>
+          <li class="rounded  list-group-item-success">
+            express, express-ejs-layouts
+          </li>
+          <li class="rounded list-group-item-success">mongoose</li>
+          <li class="rounded  list-group-item-success">
+            express-session, connect-flash
+          </li>
+          <li class="rounded  list-group-item-success">nodemailer</li>
+          <li class="rounded  list-group-item-success">passport strategies</li>
+          <li class="rounded  list-group-item-success">json-web-token</li>
         </ul>
       </ul>
     </div>
-    <div class="col-md-9 col-sm-7  rounded-3 ">
-      <ul class="rounded d-flex text-start flex-column align-content-between list-unstyled">
-        <li class="rounded text-center text-success pb-1">
-          <i class="fas fa-hand-point-right h4"></i><strong class="h5"> Read Me</strong>
+    <div class="col-md-8 col-sm-7   rounded-3 ">
+      <ul
+        class="rounded w-100 d-flex text-start flex-column align-content-between list-unstyled"
+      >
+        <li class="rounded text-center text-success mb-sm-3 mb-1">
+          <i class="fas fa-hand-point-right h4"></i
+          ><strong class="h5"> Read Me</strong>
         </li>
         <li class="rounded"><strong>Objective: </strong></li>
         <li class="rounded">
           <ul>
-            <li> The primary objective is to implement a crud using <strong>express</strong> on back-end, mongodb atlas
-              as data-tier. But as data of different kinds (drugs, gnerics etc) has interrelation, so implementation is
-              not like a simple crud. Perhaps using PostgreSQL would've been more accurate to take advantage of RDBMS.
+            <li>
+              The primary objective is to implement a crud using
+              <strong>express</strong> on back-end, mongodb atlas as data-tier.
+              But as data of different kinds (drugs, gnerics etc) has
+              interrelation, so implementation is not like a simple crud.
+              Perhaps using PostgreSQL would've been more accurate to take
+              advantage of RDBMS.
             </li>
-            <li>Making a case for using json-web-token was another objective where edit and delete operation would be
-              under protected routes.</li>
+            <li>
+              Making a case for using json-web-token was another objective where
+              edit and delete operation would be under protected routes.
+            </li>
           </ul>
         </li>
         <li class="rounded"><strong>Implementation: </strong></li>
         <li class="rounded">
           <ul>
             <li>Add,Edit,Delete in Mongodb cloud using mongoose</li>
-            <li>Use of Json Web Token, Sign in before action like: delete,edit</li>
-            <li>Cheking existance bedore addition, correlation before deletion </li>
+            <li>
+              Use of Json Web Token, Sign in before action like: delete,edit
+            </li>
+            <li>
+              Cheking existance bedore addition, correlation before deletion
+            </li>
           </ul>
         </li>
-        <li class="rounded"><strong>With Interface:</strong></li>
-        <li class="rounded"> Follow nav links to check out things with basic interfaces </li>
+        <!-- <li class="rounded"><strong>With Interface:</strong></li>
+        <li class="rounded">
+          Follow nav links to check out things with basic interfaces
+        </li>
         <li class="rounded"><strong>Just JSON Result:</strong></li>
-        <li class="rounded"> Bellow routes are just to send out json result so that other app can use it (well, that's
-          the theory). </li>
+        <li class="rounded">
+          Bellow routes are just to send out json result so that other app can
+          use it (well, that's the theory).
+        </li> -->
       </ul>
     </div>
   </div>
-  <div class="row pt-4 text-start rounded-3 bg-warning bg-opacity-10">
+  <!-- <div class="row pt-4 text-start rounded-3 bg-warning bg-opacity-10">
     <div class="col-md-6">
       <h5>
         <i class="fas fa-th-list"></i>
-        <span class="text-success fw-normal fst-italic text-center h6">Open Routes </span>
+        <span class="text-success fw-normal fst-italic text-center h6"
+          >Open Routes
+        </span>
       </h5>
       <ul class="list-unstyled text-start">
-        <li class=" "> Get<a class="mx-5 text-decoration-none" href="/api/drugs">api/drugs</a>
+        <li class=" ">
+          Get<a class="mx-5 text-decoration-none" href="/api/drugs"
+            >api/drugs</a
+          >
         </li>
-        <li class="text-start"> Get<a class="mx-5 text-decoration-none" href="/api/drugs/id">api/drugs/id</a>
+        <li class="text-start">
+          Get<a class="mx-5 text-decoration-none" href="/api/drugs/id"
+            >api/drugs/id</a
+          >
         </li>
-        <li class="text-start"> Get<a class="mx-5 text-decoration-none"
-            href="/api/drugs/search?q=Laptop">api/drugs/search?q=doxi</a>
+        <li class="text-start">
+          Get<a
+            class="mx-5 text-decoration-none"
+            href="/api/drugs/search?q=Laptop"
+            >api/drugs/search?q=doxi</a
+          >
         </li>
-        <li class="text-start"> POST<a class="mx-4 text-decoration-none" href="/api/drugs/add">api/drugs/add</a>
+        <li class="text-start">
+          POST<a class="mx-4 text-decoration-none" href="/api/drugs/add"
+            >api/drugs/add</a
+          >
         </li>
-        <li class=""> Get<a class="mx-5 text-decoration-none"
-            href="/api/groups?skip=5&limit=10">api/drugs?skip=5&limit=10</a>
+        <li class="">
+          Get<a
+            class="mx-5 text-decoration-none"
+            href="/api/groups?skip=5&limit=10"
+            >api/drugs?skip=5&limit=10</a
+          >
         </li>
-        <li class=""> Delete<a class="mx-5 text-decoration-none" href="/api/drugs/id">api/drugs/id</a>
+        <li class="">
+          Delete<a class="mx-5 text-decoration-none" href="/api/drugs/id"
+            >api/drugs/id</a
+          >
         </li>
-        <li class=""> PUT<a class="mx-5 text-decoration-none" href="/drugs">go to navlink- 'drugs' and select one item
-            from table to update</a>
+        <li class="">
+          PUT<a class="mx-5 text-decoration-none" href="/drugs"
+            >go to navlink- 'drugs' and select one item from table to update</a
+          >
         </li>
       </ul>
     </div>
     <div class="col-md-6">
       <h5>
         <i class="fas fa-th-list"></i>
-        <span class="text-success h6 fw-normal fst-italic text-center">Routes Required JSON Web Token</span>
+        <span class="text-success h6 fw-normal fst-italic text-center"
+          >Routes Required JSON Web Token</span
+        >
       </h5>
       <ul class="list-unstyled text-start align-content-center">
-        <li class=" "> Get<a class="mx-5 text-decoration-none" href="/api/drugs">api/drugs</a>
+        <li class=" ">
+          Get<a class="mx-5 text-decoration-none" href="/api/drugs"
+            >api/drugs</a
+          >
         </li>
-        <li class=""> Get<a class="mx-5 text-decoration-none" href="/api/drugs/id">api/drugs/id</a>
+        <li class="">
+          Get<a class="mx-5 text-decoration-none" href="/api/drugs/id"
+            >api/drugs/id</a
+          >
         </li>
-        <li class=""> Get<a class="mx-5 text-decoration-none"
-            href="/api/drugs/search?q=Laptop">api/drugs/search?q=doxi</a>
+        <li class="">
+          Get<a
+            class="mx-5 text-decoration-none"
+            href="/api/drugs/search?q=Laptop"
+            >api/drugs/search?q=doxi</a
+          >
         </li>
-        <li class=""> POST<a class="mx-4 text-decoration-none" href="/api/drugs/add">api/drugs/add</a>
+        <li class="">
+          POST<a class="mx-4 text-decoration-none" href="/api/drugs/add"
+            >api/drugs/add</a
+          >
         </li>
-        <li class=""> Get<a class="mx-5 text-decoration-none"
-            href="/api/groups?skip=5&limit=10">api/drugs?skip=5&limit=10</a>
+        <li class="">
+          Get<a
+            class="mx-5 text-decoration-none"
+            href="/api/groups?skip=5&limit=10"
+            >api/drugs?skip=5&limit=10</a
+          >
         </li>
-        <li class=""> Delete<a class="mx-5 text-decoration-none" href="/api/drugs/id">api/drugs/id</a>
+        <li class="">
+          Delete<a class="mx-5 text-decoration-none" href="/api/drugs/id"
+            >api/drugs/id</a
+          >
         </li>
-        <li class=""> PUT<a class="mx-5 text-decoration-none" href="/drugs">go to navlink- 'drugs' and select one item
-            from table to update</a>
+        <li class="">
+          PUT<a class="mx-5 text-decoration-none" href="/drugs"
+            >go to navlink- 'drugs' and select one item from table to update</a
+          >
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
 </div>

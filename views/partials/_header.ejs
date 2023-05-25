@@ -1,13 +1,13 @@
 <div
-  class="row navbar mt-0 pt-0 shadow-sm"
-  style="background-color: rgb(7, 58, 58)"
+  class="d-flex justify-content-between mt-0 pt-0 shadow-sm  text-dark py-auto"
+  style="background-color: rgb(54, 109, 109);min-height: 65px;"
 >
   <div
-    class="ms-4 col-md-4 navbar-brand text-md-start text-center wrap d-flex align-content-center"
+    class="ms-4  text-md-start text-center wrap d-flex align-content-center bg-success"
   >
     <a
       href="/"
-      class="px-1 text-decoration-none text-white border-3 border-start border-end border-success rounded-pill"
+      class="px-1 text-decoration-none  text-white border-3 border-start border-end border-success rounded-3"
       >drugs.info</a
     >
     <a
@@ -23,76 +23,46 @@
     >
       Logout</a
     >
-    <%} else{%>
-    <div class="btn-group" role="group">
-      <button
-        id="btnGroupDrop"
-        type="button"
-        style="background-color: rgb(176, 209, 209); max-height: 26px"
-        class="btn btn-sm fw-normal bg-gradient mt-1 px-2 text-dark rounded-3 py-0 ms-3 dropdown-toggle"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        <i class="fa fa-user text-success me-1 mb-1" aria-hidden="true"></i>User
-      </button>
-      <ul
-        class="mt-0 dropdown-menu py-5 text-center"
-        style="background-color: rgb(176, 209, 209)"
-        aria-labelledby="btnGroupDrop"
-      >
-        <li class="mx-2 bg-gradient rounded-pill shadow-sm">
-          <a class="btn btn-sm dropdown-item text-dark" href="/register"
-            ><i class="fa fa-user-plus me-1" aria-hidden="true"></i> Register
-          </a>
-        </li>
-        <hr />
-        <li class="mx-2 bg-gradient rounded-pill shadow-sm">
-          <a class="dropdown-item btn btn-sm text-dark" href="/signin"
-            ><i class="fas fa-sign-in me-1"></i> Login</a
-          >
-        </li>
-      </ul>
-    </div>
-    <%}%>
+    <%} else{%> <%}%>
   </div>
-  <div class="col-md-7 me-2 pt-1">
+  <div class="  me-2 pt-1">
     <ul
-      class="nav text-black d-flex justify-content-center justify-content-md-end align-items-start flex-sm-row flex-column"
+      class=" flex-sm-row flex-column gap-sm-3"
     >
-      <li class="nav-item">
+      <li>
         <a
-          class="nav-link fw-bold rounded-pill bg-gradient"
+          class=" fw-bold rounded-pill bg-gradient"
           href="/drugs"
           style="color: rgb(236, 168, 145)"
         >
           Brands
         </a>
       </li>
-      <li class="nav-item">
+      <li class="-item w-sm-100 ">
         <a
-          class="nav-link link-info fw-bold rounded-pill bg-gradient"
+          class=" link-info fw-bold w-sm-100 rounded-pill bg-gradient"
           href="/companies"
           >Manufacturers</a
         >
       </li>
-      <li class="nav-item">
+      <li class="-item">
         <a
-          class="nav-link link-warning fw-bold rounded-pill bg-gradient"
+          class=" link-warning fw-bold rounded-pill bg-gradient"
           href="/generics"
           >Generics</a
         >
       </li>
-      <li class="nav-item">
+      <li class="-item">
         <a
-          class="nav-link fw-bold rounded-pill bg-gradient"
+          class=" fw-bold rounded-pill bg-gradient"
           href="/groups"
           style="color: lightblue"
           >Groups</a
         >
       </li>
-      <li class="nav-item">
+      <li class="-item">
         <a
-          class="nav-link fw-bold rounded-pill bg-gradient"
+          class=" fw-bold rounded-pill bg-gradient"
           href="/formulations"
           style="color: beige"
           >Formulations</a

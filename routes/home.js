@@ -9,12 +9,12 @@ router.get("/", (req, res) => {
     req.user.status == "not-verified"
   ) {
     res.render("page_landing", {
-      loggedin: false,
+      authstatus : false,
       data: "null",
     });
   } else if (req.user.status == "logged-in") {
     res.render("page_landing", {
-      loggedin: true,
+      authstatus : true,
       data: req.user,
     });
   }

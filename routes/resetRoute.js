@@ -42,7 +42,7 @@ resetRoute.get("/:token", async (req, res) => {
                           console.log("Removed token : ", docs);
                           res.render("page_login", {
                             msg: "email verified: you can login now.",
-                            loggedin: true,
+                            authstatus : true,
                           });
                         }
                       }

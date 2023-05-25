@@ -1,0 +1,69 @@
+<div
+  class="container  d-flex flex-sm-row gap-sm-2 flex-column justify-content-center py-1 rounded-3"
+  style="min-height: 65px;"
+>
+  <a
+    href="/"
+    class="nav-link  px-2 py-sm-1 py-0 mb-auto fw-bold  "
+    style=" color: rgb(190, 158, 116);"
+  >
+    <i class="fas fa-home"></i> drugs.info</a
+  >
+
+  <a
+    target="_blank"
+    class="nav-link  px-2  py-sm-1 py-0 mb-auto   "
+    style=" color: rgb(172, 110, 29);"
+    href="https://github.com/masumkhan081/drugs.info"
+    ><i class="fa-brands fa-github me-1 fw-bold"></i>src</a
+  >
+  <a
+    class="nav-link  px-2  py-sm-1 py-0 mb-auto rounded-3  "
+    style=" color: teal;"
+    href="/drugs"
+    >Drugs</a
+  >
+
+  <a
+    class="nav-link  px-2  py-sm-1 py-0 mb-auto rounded-3  "
+    style=" color: teal;"
+    href="/companies"
+    >Manufacturers</a
+  >
+
+  <a
+    class="nav-link  px-2  py-sm-1 py-0 mb-auto rounded-3  "
+    style=" color: teal;"
+    href="/generics"
+    >Generics</a
+  >
+  <a
+    class="nav-link  px-2  py-sm-1 py-0 mb-auto rounded-3"
+    style=" color: teal;"
+    href="/groups"
+    >Groups</a
+  >
+  <a
+    class="nav-link  px-2  py-sm-1 py-0 mb-auto rounded-3"
+    style=" color: teal;"
+    href="/formulations"
+    >Formulations</a
+  >
+  <%if(authstatus==="true"){%>
+  <a
+    class="nav-link  px-2  py-sm-1 py-0 mb-auto rounded-2 border border-0 border-bottom border-danger"
+    style=" color: crimson;"
+    href="/logout"
+    >Log out</a
+  >
+  <%} else{%>
+
+  <a
+    class="nav-link  px-2  py-sm-1 py-0 mb-auto rounded-3  rounded-2 border border-0 border-bottom border-success"
+    style=" color: teal;"
+    href="/signin"
+    >sign in</a
+  >
+
+  <%}%>
+</div>
